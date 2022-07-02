@@ -14,7 +14,7 @@ struct ContentView: View {
 	var body: some View {
 		NavigationView {
 			ListView()
-				.navigationTitle("Expenses")
+				.navigationTitle("iBudget")
 				.toolbar {
 					ToolbarItem(placement: .navigationBarLeading) {
 						EditButton()
