@@ -36,6 +36,7 @@ class Budget {
 		amountLeft -= amount
 	}
 	func gain(_ amount: Double) {
-		spend(-amount)
+		amountSpent -= amount
+		amountLeft += amount
 	}
 }
