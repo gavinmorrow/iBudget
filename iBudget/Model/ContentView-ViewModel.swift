@@ -22,6 +22,13 @@ extension ContentView {
 			} catch {}
 			
 			self.budget = Budget(amount: 30)
+			
+			let amountSpent = self.transactions.reduce(0) { sum, transaction in
+				sum + transaction.amount
+			}
+			// Negatate the amount b/c it is stored as a negative if is it being spent,
+			// but the `spend` function takes a positive about for being spent.
+			budget.spend(-amountSpent)
 		}
 		
 		// MARK: Transactions
