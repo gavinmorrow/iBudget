@@ -46,7 +46,9 @@ extension ContentView {
 		/// Adds a transaction to the beginning of the transactions array.
 		func add(transaction: Transaction) {
 			// Update budget
-			budget.spend(transaction.amount)
+			// Negatate the amount b/c it is stored as a negative if is it being spent,
+			// but the `spend` function takes a positive about for being spent.
+			budget.spend(-transaction.amount)
 			
 			// Add it to the list
 			transactions.insert(transaction, at: 0)
