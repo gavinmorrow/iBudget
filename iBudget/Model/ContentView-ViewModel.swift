@@ -61,7 +61,7 @@ extension ContentView {
 			// Update budget
 			offsets.forEach { index in
 				let transaction = transactions[index]
-				budget.gain(transaction.amount)
+				budget.gain(-transaction.amount)
 			}
 			
 			// Remove it from the list
