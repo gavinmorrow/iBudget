@@ -9,7 +9,7 @@ import Foundation
 
 class Budget {
 	enum BudgetInterval {
-		case dailyx
+		case daily
 		case weekly
 		case monthly
 		case yearly
