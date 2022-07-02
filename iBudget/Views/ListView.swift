@@ -12,16 +12,22 @@ struct ListView: View {
 	
 	var body: some View {
 		List {
-			ForEach(viewModel.transactions) { transaction in
-				NavigationLink {
-					TransactionDetailView(transaction: transaction)
-				} label: {
-					TransactionRow(transaction: transaction)
-				}
+			Section(header: Text("Amount left in budget")) {
+				Text(viewModel.budget.amountLeft, format: .currency(code: Locale.current.currencyCode ?? "USD"))
 			}
-			.onDelete { offsets in
-				Task { @MainActor in
-					viewModel.remove(at: offsets)
+			
+			Section(header: Text("Transactions")) {
+				ForEach(viewModel.transactions) { transaction in
+					NavigationLink {
+						TransactionDetailView(transaction: transaction)
+					} label: {
+						TransactionRow(transaction: transaction)
+					}
+				}
+				.onDelete { offsets in
+					Task { @MainActor in
+						viewModel.remove(at: offsets)
+					}
 				}
 			}
 		}
