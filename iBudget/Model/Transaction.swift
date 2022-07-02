@@ -5,8 +5,6 @@
 //  Created by Gavin Morrow on 6/23/22.
 //
 
-import SwiftUI
-
 /// A struct with all the data about a transaction.
 struct Transaction: Codable, Identifiable, Comparable, Equatable {
 	// MARK: Main properties

@@ -9,10 +9,7 @@ import SwiftUI
 import LocalAuthentication
 
 struct ContentView: View {
-	@StateObject var transactions = Transactions()
-	
-	@State private var showingSheet = false
-	@State private var isUnlocked = false
+	@StateObject var viewModel = ViewModel()
 	
 	var body: some View {
 		NavigationView {
@@ -25,16 +22,16 @@ struct ContentView: View {
 					
 					ToolbarItem(placement: .navigationBarTrailing) {
 						Button {
-							showingSheet = true
+							viewModel.showingSheet = true
 						} label: {
 							Label("New Transaction", systemImage: "plus")
 						}
 					}
 				}
 		}
-		.environmentObject(transactions)
-		.sheet(isPresented: $showingSheet) {
-			CreateView(transactions: transactions)
+		.environmentObject(viewModel)
+		.sheet(isPresented: $viewModel.showingSheet) {
+			CreateView(viewModel: viewModel)
 		}
 	}
 	
@@ -47,7 +44,7 @@ struct ContentView: View {
 			
 			context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { sucess, authenticationError in
 				Task { @MainActor in
-					self.isUnlocked = sucess
+					self.viewModel.isUnlocked = sucess
 				}
 			}
 		}

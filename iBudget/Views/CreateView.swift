@@ -11,7 +11,7 @@ let currencyFormatter = FloatingPointFormatStyle<Double>.Currency
 	.currency(code: Locale.current.currencyCode ?? "USD")
 
 struct CreateView: View {
-	var transactions: Transactions
+	var viewModel: ContentView.ViewModel
 	
 	@Environment(\.dismiss) var dismiss
 	
@@ -42,7 +42,7 @@ struct CreateView: View {
 			Section {
 				Button("Create") {
 					let transaction = Transaction(amount: amount, person: person, date: date, notes: notes)
-					transactions.add(transaction: transaction)
+					viewModel.add(transaction: transaction)
 					
 					dismiss()
 				}
@@ -53,6 +53,6 @@ struct CreateView: View {
 
 struct CreateView_Previews: PreviewProvider {
     static var previews: some View {
-		CreateView(transactions: Transactions())
+		CreateView(viewModel: ContentView.ViewModel())
     }
 }

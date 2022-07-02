@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct ListView: View {
-	@EnvironmentObject var transactions: Transactions
+	@EnvironmentObject var viewModel: ContentView.ViewModel
 	
 	var body: some View {
 		List {
-			ForEach(transactions.transactions) { transaction in
+			ForEach(viewModel.transactions) { transaction in
 				NavigationLink {
 					TransactionDetailView(transaction: transaction)
 				} label: {
 					TransactionRow(transaction: transaction)
 				}
 			}
-			.onDelete(perform: transactions.remove)
+			.onDelete { offsets in
+				Task { @MainActor in
+					viewModel.remove(at: offsets)
+				}
+			}
 		}
 	}
 }
@@ -29,20 +33,20 @@ struct ListView_Previews: PreviewProvider {
 		NavigationView {
 			ListView()
 				.navigationTitle("Budget Tracker")
-				.environmentObject({ () -> Transactions in
-					let transactions = Transactions()
+				.environmentObject({ () -> ContentView.ViewModel in
+					let viewModel = ContentView.ViewModel()
 					
-					transactions.transactions.forEach {
-						transactions.remove(
-							at: IndexSet(integer: transactions.transactions.firstIndex(of: $0)!)
+					viewModel.transactions.forEach {
+						viewModel.remove(
+							at: IndexSet(integer: viewModel.transactions.firstIndex(of: $0)!)
 						)
 					}
 					
 					for _ in 0..<5 {
-						transactions.add(transaction: Transaction.example)
+						viewModel.add(transaction: Transaction.example)
 					}
 					
-					return transactions
+					return viewModel
 				}())
 		}
 	}
