@@ -38,7 +38,7 @@ struct ListView_Previews: PreviewProvider {
 	static var previews: some View {
 		NavigationView {
 			ListView()
-				.navigationTitle("Budget Tracker")
+				.navigationTitle("iBudget")
 				.environmentObject({ () -> ContentView.ViewModel in
 					let viewModel = ContentView.ViewModel()
 					
