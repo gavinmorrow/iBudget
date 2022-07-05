@@ -21,6 +21,8 @@
 		86B1CD502864C10700F48CA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B1CD4F2864C10700F48CA4 /* Preview Assets.xcassets */; };
 		86B1CD572864C16B00F48CA4 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1CD562864C16B00F48CA4 /* Transaction.swift */; };
 		86FE9FA02870891D009A6654 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9F9F2870891D009A6654 /* Budget.swift */; };
+		86FE9FA22870FA5A009A6654 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA12870FA5A009A6654 /* TransactionsView.swift */; };
+		86FE9FA42871B5AB009A6654 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA32871B5AB009A6654 /* BudgetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		86B1CD4F2864C10700F48CA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		86B1CD562864C16B00F48CA4 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		86FE9F9F2870891D009A6654 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		86FE9FA12870FA5A009A6654 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
+		86FE9FA32871B5AB009A6654 /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				86B1CD4A2864C10400F48CA4 /* ContentView.swift */,
+				86FE9FA32871B5AB009A6654 /* BudgetView.swift */,
+				86FE9FA12870FA5A009A6654 /* TransactionsView.swift */,
 				86689378286F9C61002FE51D /* ListView.swift */,
 				867DED4D2869C62200240434 /* CreateView.swift */,
 				863BB1F0286522C900253B0F /* TransactionDetailView.swift */,
@@ -199,10 +205,12 @@
 				863BB1F1286522C900253B0F /* TransactionDetailView.swift in Sources */,
 				863BB1F32865F40800253B0F /* AmountView.swift in Sources */,
 				867DED50286E41EA00240434 /* FileManager-Extension.swift in Sources */,
+				86FE9FA22870FA5A009A6654 /* TransactionsView.swift in Sources */,
 				863BB1EF28651D8300253B0F /* TransactionRow.swift in Sources */,
 				867DED4E2869C62200240434 /* CreateView.swift in Sources */,
 				867DED53286E579F00240434 /* getTransactionColor.swift in Sources */,
 				86689379286F9C61002FE51D /* ListView.swift in Sources */,
+				86FE9FA42871B5AB009A6654 /* BudgetView.swift in Sources */,
 				86B1CD492864C10400F48CA4 /* IBudgetApp.swift in Sources */,
 				86B1CD572864C16B00F48CA4 /* Transaction.swift in Sources */,
 			);
