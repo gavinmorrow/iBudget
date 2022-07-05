@@ -48,21 +48,23 @@ struct BudgetView: View {
 
 struct BudgetView_Previews: PreviewProvider {
 	static var previews: some View {
-				BudgetView()
-					.environmentObject({ () -> ContentView.ViewModel in
-						let viewModel = ContentView.ViewModel()
-		
-						viewModel.transactions.forEach {
-							viewModel.remove(
-								at: IndexSet(integer: viewModel.transactions.firstIndex(of: $0)!)
-							)
-						}
-		
-						for _ in 0..<5 {
-							viewModel.add(transaction: Transaction.example)
-						}
-		
-						return viewModel
-					}())
+		BudgetView()
+			.environmentObject({ () -> ContentView.ViewModel in
+				let viewModel = ContentView.ViewModel()
+				
+				viewModel.transactions.forEach {
+					viewModel.remove(
+						at: IndexSet(integer: viewModel.transactions.firstIndex(of: $0)!)
+					)
+				}
+				
+				for _ in 0..<5 {
+					viewModel.add(transaction: Transaction.example)
+				}
+				
+				viewModel.budget.timeSpan = .custom(interval: 0)
+				
+				return viewModel
+			}())
 	}
 }
