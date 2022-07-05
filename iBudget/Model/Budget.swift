@@ -7,8 +7,8 @@
 
 import Foundation
 
-class Budget {
 	enum BudgetInterval {
+@MainActor class Budget: ObservableObject {
 		case daily
 		case weekly
 		case monthly
@@ -25,11 +25,11 @@ class Budget {
 		self.timeSpan = timeSpan
 	}
 	
-	var amount: Double
-	private(set) var amountSpent: Double
-	private(set) var amountLeft: Double
+	@Published var amount: Double
+	@Published private(set) var amountSpent: Double
+	@Published private(set) var amountLeft: Double
 	
-	var timeSpan: BudgetInterval = .weekly
+	@Published var timeSpan: BudgetInterval = .weekly
 	
 	func spend(_ amount: Double) {
 		amountSpent += amount
