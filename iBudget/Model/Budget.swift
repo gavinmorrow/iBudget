@@ -7,14 +7,19 @@
 
 import Foundation
 
-	enum BudgetInterval {
 @MainActor class Budget: ObservableObject {
+	enum BudgetInterval: String, Hashable, Identifiable, CaseIterable {
+		case none
 		case daily
 		case weekly
 		case monthly
 		case yearly
-		case custom(interval: TimeInterval)
-		case none
+		
+		// TODO: Implement custom
+		// Maybe make an optional property that is only active if it is custom?
+//		case custom(interval: TimeInterval)
+		
+		var id: Self { self }
 	}
 	
 	init(amount: Double, timeSpan: BudgetInterval = .weekly, amountSpent: Double = 0) {
