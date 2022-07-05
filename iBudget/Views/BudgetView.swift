@@ -9,24 +9,25 @@ import SwiftUI
 
 struct BudgetView: View {
 	@EnvironmentObject var viewModel: ContentView.ViewModel
-	
-	@State var isEditing: Bool = false
+	@State var isEditing: Bool = true
 	
 	var body: some View {
 		NavigationView {
 			ZStack {
 				if isEditing {
 					Form {
-						TextField(
-							"Amount",
-							value: $viewModel.budget.amount,
-							format: .currency(code: Locale.current.currencyCode ?? "USD")
-						)
-						
-						Picker("Time Span", selection: $viewModel.budget.timeSpan) {
-							ForEach(Budget.BudgetInterval.allCases) { interval in
-								Text(interval.rawValue.capitalized)
-									.tag(interval)
+						Section {
+							TextField(
+								"Amount",
+								value: $viewModel.budget.amount,
+								format: .currency(code: Locale.current.currencyCode ?? "USD")
+							)
+							
+							Picker("Repeats", selection: $viewModel.budget.timeSpan) {
+								ForEach(RepeatingTimeInterval.allCases) { interval in
+									Text(RepeatingTimeInterval.rawValue(for: interval).capitalized)
+										.tag(interval)
+								}
 							}
 						}
 					}
