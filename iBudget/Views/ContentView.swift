@@ -12,21 +12,17 @@ struct ContentView: View {
 	@StateObject var viewModel = ViewModel()
 	
 	var body: some View {
-		NavigationView {
-			ListView()
-				.navigationTitle("iBudget")
-				.toolbar {
-					ToolbarItem(placement: .navigationBarLeading) {
-						EditButton()
-					}
-					
-					ToolbarItem(placement: .navigationBarTrailing) {
-						Button {
-							viewModel.showingSheet = true
-						} label: {
-							Label("New Transaction", systemImage: "plus")
-						}
-					}
+		TabView {
+			TransactionsView()
+				.tabItem {
+					Label("Transactions", systemImage: "list.star")
+						.symbolVariant(.none)
+				}
+			
+			BudgetView()
+				.tabItem {
+					Label("Budget", systemImage: "dollarsign")
+						.symbolVariant(.none.circle)
 				}
 		}
 		.environmentObject(viewModel)
@@ -56,3 +52,4 @@ struct ContentView_Previews: PreviewProvider {
 		ContentView()
 	}
 }
+
