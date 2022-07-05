@@ -46,18 +46,6 @@ struct BudgetView: View {
 	}
 }
 
-struct ExtractedView: View {
-	@State var timeSpan: Budget.BudgetInterval
-	var body: some View {
-		Picker("Time Interval", selection: $timeSpan) {
-			ForEach(Budget.BudgetInterval.allCases) { interval in
-				Text(interval.rawValue)
-					.tag(interval)
-			}
-		}
-	}
-}
-
 struct BudgetView_Previews: PreviewProvider {
 	static var previews: some View {
 				BudgetView()
