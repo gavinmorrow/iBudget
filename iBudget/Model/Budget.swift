@@ -31,10 +31,62 @@ import Foundation
 	}
 	
 	@Published var amount: Double
+	var amountString: String {
+		let formatter = NumberFormatter()
+		formatter.numberStyle = .currency
+		return formatter.string(from: amount as NSNumber) ?? "n/a"
+	}
 	@Published private(set) var amountSpent: Double
 	@Published private(set) var amountLeft: Double
 	
 	@Published var timeSpan: BudgetInterval = .weekly
+	var timeSpanString: String {
+		switch timeSpan {
+			case .none:
+				return ""
+			case .daily:
+				return "daily"
+			case .weekly:
+				return "weekly"
+			case .monthly:
+				return "monthly"
+			case .yearly:
+				return "yearly"
+//			case .custom(var interval):
+//				// TODO: clean up this code
+//				
+//				func round(_ num: Double, places: Int = 2)-> Double {
+//					guard places > 0 else { return 0 }
+//					return (num * pow(10.0, Double(places))).rounded() / pow(10.0, Double(places))
+//				}
+//				
+//				// test for minutes
+//				guard interval / 60 >= 1 else { return "every \(round(interval)) second(s)"}
+//				interval /= 60
+//				
+//				// test for hours
+//				guard interval / 60 >= 1 else { return "every \(round(interval)) minute(s)"}
+//				interval /= 60
+//				
+//				// test for days
+//				guard interval / 24 >= 1 else { return "every \(round(interval)) hour(s)"}
+//				interval /= 24
+//				
+//				// test for weeks
+//				guard interval / 7 >= 1 else { return "every \(round(interval)) day(s)"}
+//				interval /= 7
+//				
+//				// test for ~months
+//				guard interval / 30 >= 1 else { return "every \(round(interval)) week(s)"}
+//				interval /= 30
+//				
+//				// test for years
+//				guard interval / 365 >= 1 else { return "every \(round(interval)) month(s)"}
+//				interval /= 365
+//				
+//				return "every \(interval) year(s)"
+		}
+	}
 	
 	func spend(_ amount: Double) {
 		amountSpent += amount
