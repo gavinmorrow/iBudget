@@ -89,7 +89,7 @@ extension ContentView {
 		
 		
 		// MARK: Budget
-		var budget: Budget
+		@Published var budget: Budget
 		
 		
 		// MARK: State
