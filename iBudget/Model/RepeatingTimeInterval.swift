@@ -112,7 +112,7 @@ enum RepeatingTimeInterval: Hashable, Identifiable, CaseIterable {
 	case weekly
 	case monthly
 	case yearly
-	case custom(interval: TimeInterval)
+//	case custom(interval: TimeInterval)
 	
 	var id: Self { self }
 }
