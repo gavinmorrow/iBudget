@@ -11,7 +11,7 @@
 		863BB1F1286522C900253B0F /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863BB1F0286522C900253B0F /* TransactionDetailView.swift */; };
 		863BB1F32865F40800253B0F /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863BB1F22865F40800253B0F /* AmountView.swift */; };
 		86689379286F9C61002FE51D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86689378286F9C61002FE51D /* ListView.swift */; };
-		8668937C28708294002FE51D /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8668937B28708294002FE51D /* ContentView-ViewModel.swift */; };
+		8668937C28708294002FE51D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8668937B28708294002FE51D /* ViewModel.swift */; };
 		867DED4E2869C62200240434 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DED4D2869C62200240434 /* CreateView.swift */; };
 		867DED50286E41EA00240434 /* FileManager-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DED4F286E41EA00240434 /* FileManager-Extension.swift */; };
 		867DED53286E579F00240434 /* getTransactionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DED52286E579F00240434 /* getTransactionColor.swift */; };
@@ -25,14 +25,49 @@
 		86FE9FA42871B5AB009A6654 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA32871B5AB009A6654 /* BudgetView.swift */; };
 		86FE9FA62874DDE9009A6654 /* String-deletingPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA52874DDE9009A6654 /* String-deletingPrefix.swift */; };
 		86FE9FA82874E726009A6654 /* RepeatingTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA72874E726009A6654 /* RepeatingTimeInterval.swift */; };
+		86FE9FDB28759BD8009A6654 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FE9FAF287595CA009A6654 /* WidgetKit.framework */; };
+		86FE9FDC28759BD8009A6654 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FE9FB1287595CA009A6654 /* SwiftUI.framework */; };
+		86FE9FDF28759BD8009A6654 /* TransactionsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FDE28759BD8009A6654 /* TransactionsWidget.swift */; };
+		86FE9FE128759BDA009A6654 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86FE9FE028759BDA009A6654 /* Assets.xcassets */; };
+		86FE9FE528759BDA009A6654 /* TransactionsWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 86FE9FDA28759BD8009A6654 /* TransactionsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		86FE9FE928759C1D009A6654 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8668937B28708294002FE51D /* ViewModel.swift */; };
+		86FE9FEA28759C21009A6654 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1CD562864C16B00F48CA4 /* Transaction.swift */; };
+		86FE9FEB28759C23009A6654 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9F9F2870891D009A6654 /* Budget.swift */; };
+		86FE9FEC28759C26009A6654 /* RepeatingTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA72874E726009A6654 /* RepeatingTimeInterval.swift */; };
+		86FE9FED28759C43009A6654 /* String-deletingPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA52874DDE9009A6654 /* String-deletingPrefix.swift */; };
+		86FE9FEE28759C4B009A6654 /* FileManager-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DED4F286E41EA00240434 /* FileManager-Extension.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		86FE9FE328759BDA009A6654 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86B1CD3D2864C10400F48CA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86FE9FD928759BD8009A6654;
+			remoteInfo = TransactionsWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		86FE9FBF287595CC009A6654 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				86FE9FE528759BDA009A6654 /* TransactionsWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		863BB1EE28651D8300253B0F /* TransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRow.swift; sourceTree = "<group>"; };
 		863BB1F0286522C900253B0F /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
 		863BB1F22865F40800253B0F /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		86689378286F9C61002FE51D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		8668937B28708294002FE51D /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		8668937B28708294002FE51D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		867DED4D2869C62200240434 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		867DED4F286E41EA00240434 /* FileManager-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Extension.swift"; sourceTree = "<group>"; };
 		867DED51286E563400240434 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
@@ -48,6 +83,12 @@
 		86FE9FA32871B5AB009A6654 /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
 		86FE9FA52874DDE9009A6654 /* String-deletingPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String-deletingPrefix.swift"; path = "iBudget/Helper/String-deletingPrefix.swift"; sourceTree = SOURCE_ROOT; };
 		86FE9FA72874E726009A6654 /* RepeatingTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimeInterval.swift; sourceTree = "<group>"; };
+		86FE9FAF287595CA009A6654 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		86FE9FB1287595CA009A6654 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		86FE9FDA28759BD8009A6654 /* TransactionsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TransactionsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		86FE9FDE28759BD8009A6654 /* TransactionsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsWidget.swift; sourceTree = "<group>"; };
+		86FE9FE028759BDA009A6654 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		86FE9FE228759BDA009A6654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +96,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86FE9FD728759BD8009A6654 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86FE9FDC28759BD8009A6654 /* SwiftUI.framework in Frameworks */,
+				86FE9FDB28759BD8009A6654 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				86B1CD562864C16B00F48CA4 /* Transaction.swift */,
-				8668937B28708294002FE51D /* ContentView-ViewModel.swift */,
+				8668937B28708294002FE51D /* ViewModel.swift */,
 				86FE9F9F2870891D009A6654 /* Budget.swift */,
 				86FE9FA72874E726009A6654 /* RepeatingTimeInterval.swift */,
 			);
@@ -102,6 +152,8 @@
 			children = (
 				867DED51286E563400240434 /* TODO.md */,
 				86B1CD472864C10400F48CA4 /* iBudget */,
+				86FE9FDD28759BD8009A6654 /* TransactionsWidget */,
+				86FE9FAE287595CA009A6654 /* Frameworks */,
 				86B1CD462864C10400F48CA4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -110,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				86B1CD452864C10400F48CA4 /* iBudget.app */,
+				86FE9FDA28759BD8009A6654 /* TransactionsWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +188,25 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		86FE9FAE287595CA009A6654 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				86FE9FAF287595CA009A6654 /* WidgetKit.framework */,
+				86FE9FB1287595CA009A6654 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		86FE9FDD28759BD8009A6654 /* TransactionsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				86FE9FDE28759BD8009A6654 /* TransactionsWidget.swift */,
+				86FE9FE028759BDA009A6654 /* Assets.xcassets */,
+				86FE9FE228759BDA009A6654 /* Info.plist */,
+			);
+			path = TransactionsWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,15 +217,34 @@
 				86B1CD412864C10400F48CA4 /* Sources */,
 				86B1CD422864C10400F48CA4 /* Frameworks */,
 				86B1CD432864C10400F48CA4 /* Resources */,
+				86FE9FBF287595CC009A6654 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				86FE9FE428759BDA009A6654 /* PBXTargetDependency */,
 			);
 			name = iBudget;
 			productName = BudgetTracker;
 			productReference = 86B1CD452864C10400F48CA4 /* iBudget.app */;
 			productType = "com.apple.product-type.application";
+		};
+		86FE9FD928759BD8009A6654 /* TransactionsWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86FE9FE628759BDA009A6654 /* Build configuration list for PBXNativeTarget "TransactionsWidgetExtension" */;
+			buildPhases = (
+				86FE9FD628759BD8009A6654 /* Sources */,
+				86FE9FD728759BD8009A6654 /* Frameworks */,
+				86FE9FD828759BD8009A6654 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TransactionsWidgetExtension;
+			productName = TransactionsWidgetExtension;
+			productReference = 86FE9FDA28759BD8009A6654 /* TransactionsWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -166,6 +257,9 @@
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					86B1CD442864C10400F48CA4 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					86FE9FD928759BD8009A6654 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
@@ -184,6 +278,7 @@
 			projectRoot = "";
 			targets = (
 				86B1CD442864C10400F48CA4 /* iBudget */,
+				86FE9FD928759BD8009A6654 /* TransactionsWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -198,6 +293,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		86FE9FD828759BD8009A6654 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86FE9FE128759BDA009A6654 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -205,7 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8668937C28708294002FE51D /* ContentView-ViewModel.swift in Sources */,
+				8668937C28708294002FE51D /* ViewModel.swift in Sources */,
 				86B1CD4B2864C10400F48CA4 /* ContentView.swift in Sources */,
 				86FE9FA02870891D009A6654 /* Budget.swift in Sources */,
 				863BB1F1286522C900253B0F /* TransactionDetailView.swift in Sources */,
@@ -224,7 +327,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		86FE9FD628759BD8009A6654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86FE9FDF28759BD8009A6654 /* TransactionsWidget.swift in Sources */,
+				86FE9FE928759C1D009A6654 /* ViewModel.swift in Sources */,
+				86FE9FEC28759C26009A6654 /* RepeatingTimeInterval.swift in Sources */,
+				86FE9FEB28759C23009A6654 /* Budget.swift in Sources */,
+				86FE9FEE28759C4B009A6654 /* FileManager-Extension.swift in Sources */,
+				86FE9FED28759C43009A6654 /* String-deletingPrefix.swift in Sources */,
+				86FE9FEA28759C21009A6654 /* Transaction.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		86FE9FE428759BDA009A6654 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 86FE9FD928759BD8009A6654 /* TransactionsWidgetExtension */;
+			targetProxy = 86FE9FE328759BDA009A6654 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		86B1CD512864C10700F48CA4 /* Debug */ = {
@@ -344,6 +469,7 @@
 		86B1CD542864C10700F48CA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -374,6 +500,7 @@
 		86B1CD552864C10700F48CA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -401,6 +528,60 @@
 			};
 			name = Release;
 		};
+		86FE9FE728759BDA009A6654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2K686Y87BH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TransactionsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TransactionsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gm.iBudget.TransactionsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		86FE9FE828759BDA009A6654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2K686Y87BH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TransactionsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TransactionsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gm.iBudget.TransactionsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -418,6 +599,15 @@
 			buildConfigurations = (
 				86B1CD542864C10700F48CA4 /* Debug */,
 				86B1CD552864C10700F48CA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		86FE9FE628759BDA009A6654 /* Build configuration list for PBXNativeTarget "TransactionsWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86FE9FE728759BDA009A6654 /* Debug */,
+				86FE9FE828759BDA009A6654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

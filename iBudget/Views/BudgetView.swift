@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BudgetView: View {
-	@EnvironmentObject var viewModel: ContentView.ViewModel
+	@EnvironmentObject var viewModel: ViewModel
 	@State var isEditing: Bool = true
 	
 	var body: some View {
@@ -50,8 +50,8 @@ struct BudgetView: View {
 struct BudgetView_Previews: PreviewProvider {
 	static var previews: some View {
 		BudgetView()
-			.environmentObject({ () -> ContentView.ViewModel in
-				let viewModel = ContentView.ViewModel()
+			.environmentObject({ () -> ViewModel in
+				let viewModel = ViewModel()
 				
 				viewModel.transactions.forEach {
 					viewModel.remove(
@@ -63,7 +63,7 @@ struct BudgetView_Previews: PreviewProvider {
 					viewModel.add(transaction: Transaction.example)
 				}
 				
-				viewModel.budget.timeSpan = .custom(interval: 0)
+//				viewModel.budget.timeSpan = .custom(interval: 0)
 				
 				return viewModel
 			}())

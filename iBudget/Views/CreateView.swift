@@ -11,7 +11,7 @@ let currencyFormatter = FloatingPointFormatStyle<Double>.Currency
 	.currency(code: Locale.current.currencyCode ?? "USD")
 
 struct CreateView: View {
-	var viewModel: ContentView.ViewModel
+	var viewModel: ViewModel
 	
 	@Environment(\.dismiss) var dismiss
 	
@@ -53,6 +53,6 @@ struct CreateView: View {
 
 struct CreateView_Previews: PreviewProvider {
     static var previews: some View {
-		CreateView(viewModel: ContentView.ViewModel())
+		CreateView(viewModel: ViewModel())
     }
 }

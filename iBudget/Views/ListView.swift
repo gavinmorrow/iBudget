@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListView: View {
-	@EnvironmentObject var viewModel: ContentView.ViewModel
+	@EnvironmentObject var viewModel: ViewModel
 	
 	var body: some View {
 		List {
@@ -39,8 +39,8 @@ struct ListView_Previews: PreviewProvider {
 		NavigationView {
 			ListView()
 				.navigationTitle("iBudget")
-				.environmentObject({ () -> ContentView.ViewModel in
-					let viewModel = ContentView.ViewModel()
+				.environmentObject({ () -> ViewModel in
+					let viewModel = ViewModel()
 					
 					viewModel.transactions.forEach {
 						viewModel.remove(
