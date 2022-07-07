@@ -10,11 +10,7 @@ import Foundation
 extension FileManager {
 	/// The documents directory for the app.
 	var documentsDirectory: URL {
-		// find all possible documents directories for this user
-		let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-		
-		// just send back the first one, which should be the only one
-		return paths[0]
+		FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.gm.iBudget")!
 	}
 	
 	/// Read a file from disk

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86192FA42875F920003E01CD /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863BB1F22865F40800253B0F /* AmountView.swift */; };
+		86192FA52875F955003E01CD /* getTransactionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DED52286E579F00240434 /* getTransactionColor.swift */; };
 		863BB1EF28651D8300253B0F /* TransactionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863BB1EE28651D8300253B0F /* TransactionRow.swift */; };
 		863BB1F1286522C900253B0F /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863BB1F0286522C900253B0F /* TransactionDetailView.swift */; };
 		863BB1F32865F40800253B0F /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863BB1F22865F40800253B0F /* AmountView.swift */; };
@@ -63,6 +65,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		86192FA22875C4C0003E01CD /* iBudget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iBudget.entitlements; sourceTree = "<group>"; };
+		86192FA32875C53B003E01CD /* TransactionsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TransactionsWidgetExtension.entitlements; sourceTree = "<group>"; };
 		863BB1EE28651D8300253B0F /* TransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRow.swift; sourceTree = "<group>"; };
 		863BB1F0286522C900253B0F /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
 		863BB1F22865F40800253B0F /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 		86B1CD3C2864C10400F48CA4 = {
 			isa = PBXGroup;
 			children = (
+				86192FA32875C53B003E01CD /* TransactionsWidgetExtension.entitlements */,
 				867DED51286E563400240434 /* TODO.md */,
 				86B1CD472864C10400F48CA4 /* iBudget */,
 				86FE9FDD28759BD8009A6654 /* TransactionsWidget */,
@@ -170,6 +175,7 @@
 		86B1CD472864C10400F48CA4 /* iBudget */ = {
 			isa = PBXGroup;
 			children = (
+				86192FA22875C4C0003E01CD /* iBudget.entitlements */,
 				86B1CD482864C10400F48CA4 /* IBudgetApp.swift */,
 				86689375286F8EFB002FE51D /* Views */,
 				86689376286F8F1C002FE51D /* Model */,
@@ -333,9 +339,11 @@
 			files = (
 				86FE9FDF28759BD8009A6654 /* TransactionsWidget.swift in Sources */,
 				86FE9FE928759C1D009A6654 /* ViewModel.swift in Sources */,
+				86192FA42875F920003E01CD /* AmountView.swift in Sources */,
 				86FE9FEC28759C26009A6654 /* RepeatingTimeInterval.swift in Sources */,
 				86FE9FEB28759C23009A6654 /* Budget.swift in Sources */,
 				86FE9FEE28759C4B009A6654 /* FileManager-Extension.swift in Sources */,
+				86192FA52875F955003E01CD /* getTransactionColor.swift in Sources */,
 				86FE9FED28759C43009A6654 /* String-deletingPrefix.swift in Sources */,
 				86FE9FEA28759C21009A6654 /* Transaction.swift in Sources */,
 			);
@@ -472,6 +480,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iBudget/iBudget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iBudget/Preview Content\"";
@@ -503,6 +512,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iBudget/iBudget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iBudget/Preview Content\"";
@@ -533,6 +543,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = TransactionsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2K686Y87BH;
@@ -560,6 +571,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = TransactionsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2K686Y87BH;

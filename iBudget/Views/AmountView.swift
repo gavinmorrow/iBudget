@@ -17,8 +17,7 @@ struct AmountView: View {
 		Group {
 			Text(transaction.sign)
 			// Make the amount positive because the sign is added above
-			// TODO: make currency symbol localized
-			+ Text(abs(transaction.amount), format: .currency(code: "USD"))
+			+ Text(abs(transaction.amount), format: .currency(code: Locale.current.currencyCode ?? "USD"))
 		}
 		.foregroundColor(differentiateWithoutColor ? .black : getColor(of: transaction))
 	}
