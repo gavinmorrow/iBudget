@@ -8,7 +8,7 @@
 import Foundation
 
 /// A struct with all the data about a transaction.
-struct Transaction: Codable, Identifiable, Comparable, Equatable {
+struct Transaction: Codable, Identifiable, Comparable, Equatable, Hashable {
 	// MARK: Main properties
 	/// The unique id of the transaction
 	var id = UUID()

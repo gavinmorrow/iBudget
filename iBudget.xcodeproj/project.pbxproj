@@ -11,7 +11,7 @@
 		863BB1F1286522C900253B0F /* TransactionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863BB1F0286522C900253B0F /* TransactionDetailView.swift */; };
 		863BB1F32865F40800253B0F /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863BB1F22865F40800253B0F /* AmountView.swift */; };
 		86689379286F9C61002FE51D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86689378286F9C61002FE51D /* ListView.swift */; };
-		8668937C28708294002FE51D /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8668937B28708294002FE51D /* ContentView-ViewModel.swift */; };
+		8668937C28708294002FE51D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8668937B28708294002FE51D /* ViewModel.swift */; };
 		867DED4E2869C62200240434 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DED4D2869C62200240434 /* CreateView.swift */; };
 		867DED50286E41EA00240434 /* FileManager-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DED4F286E41EA00240434 /* FileManager-Extension.swift */; };
 		867DED53286E579F00240434 /* getTransactionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867DED52286E579F00240434 /* getTransactionColor.swift */; };
@@ -27,12 +27,26 @@
 		86FE9FA82874E726009A6654 /* RepeatingTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA72874E726009A6654 /* RepeatingTimeInterval.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		86FE9FBF287595CC009A6654 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		86192FA22875C4C0003E01CD /* iBudget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iBudget.entitlements; sourceTree = "<group>"; };
 		863BB1EE28651D8300253B0F /* TransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRow.swift; sourceTree = "<group>"; };
 		863BB1F0286522C900253B0F /* TransactionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailView.swift; sourceTree = "<group>"; };
 		863BB1F22865F40800253B0F /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 		86689378286F9C61002FE51D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		8668937B28708294002FE51D /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		8668937B28708294002FE51D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		867DED4D2869C62200240434 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		867DED4F286E41EA00240434 /* FileManager-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Extension.swift"; sourceTree = "<group>"; };
 		867DED51286E563400240434 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
@@ -48,6 +62,8 @@
 		86FE9FA32871B5AB009A6654 /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
 		86FE9FA52874DDE9009A6654 /* String-deletingPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String-deletingPrefix.swift"; path = "iBudget/Helper/String-deletingPrefix.swift"; sourceTree = SOURCE_ROOT; };
 		86FE9FA72874E726009A6654 /* RepeatingTimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimeInterval.swift; sourceTree = "<group>"; };
+		86FE9FAF287595CA009A6654 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		86FE9FB1287595CA009A6654 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				86B1CD562864C16B00F48CA4 /* Transaction.swift */,
-				8668937B28708294002FE51D /* ContentView-ViewModel.swift */,
+				8668937B28708294002FE51D /* ViewModel.swift */,
 				86FE9F9F2870891D009A6654 /* Budget.swift */,
 				86FE9FA72874E726009A6654 /* RepeatingTimeInterval.swift */,
 			);
@@ -102,6 +118,7 @@
 			children = (
 				867DED51286E563400240434 /* TODO.md */,
 				86B1CD472864C10400F48CA4 /* iBudget */,
+				86FE9FAE287595CA009A6654 /* Frameworks */,
 				86B1CD462864C10400F48CA4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +134,7 @@
 		86B1CD472864C10400F48CA4 /* iBudget */ = {
 			isa = PBXGroup;
 			children = (
+				86192FA22875C4C0003E01CD /* iBudget.entitlements */,
 				86B1CD482864C10400F48CA4 /* IBudgetApp.swift */,
 				86689375286F8EFB002FE51D /* Views */,
 				86689376286F8F1C002FE51D /* Model */,
@@ -135,6 +153,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		86FE9FAE287595CA009A6654 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				86FE9FAF287595CA009A6654 /* WidgetKit.framework */,
+				86FE9FB1287595CA009A6654 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +172,7 @@
 				86B1CD412864C10400F48CA4 /* Sources */,
 				86B1CD422864C10400F48CA4 /* Frameworks */,
 				86B1CD432864C10400F48CA4 /* Resources */,
+				86FE9FBF287595CC009A6654 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -205,7 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8668937C28708294002FE51D /* ContentView-ViewModel.swift in Sources */,
+				8668937C28708294002FE51D /* ViewModel.swift in Sources */,
 				86B1CD4B2864C10400F48CA4 /* ContentView.swift in Sources */,
 				86FE9FA02870891D009A6654 /* Budget.swift in Sources */,
 				863BB1F1286522C900253B0F /* TransactionDetailView.swift in Sources */,
@@ -344,8 +372,10 @@
 		86B1CD542864C10700F48CA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iBudget/iBudget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iBudget/Preview Content\"";
@@ -374,8 +404,10 @@
 		86B1CD552864C10700F48CA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = iBudget/iBudget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"iBudget/Preview Content\"";
