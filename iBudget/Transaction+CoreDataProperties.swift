@@ -34,6 +34,18 @@ extension Transaction {
 		set { cents = Int32(newValue * 100) }
 	}
 	
+	/// The amount taking into consideration the `type` of the transaction.
+	///
+	/// - If it is a debt, the amount returned will be neative.
+	/// - If it is a credit, the amount returned will be positive.
+	public var typedAmount: Double {
+		if type == .debt {
+			return amount * -1
+		} else {
+			return amount
+		}
+	}
+	
 	public var localizedAmount: String {
 		let formatter = NumberFormatter()
 		formatter.currencyCode = Locale.current.currencyCode ?? "USD"
