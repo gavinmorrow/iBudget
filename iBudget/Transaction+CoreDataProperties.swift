@@ -77,6 +77,16 @@ extension Transaction: Comparable {
 	}
 }
 
+extension Transaction {
+	public static func + (lhs: Transaction, rhs: Transaction) -> Double {
+		lhs.typedAmount + rhs.typedAmount
+	}
+	
+	public static func + (lhs: Double, rhs: Transaction) -> Double {
+		lhs + rhs.typedAmount
+	}
+}
+
 extension Transaction /* Equatable */ {
 	public static func ==(lhs: Transaction, rhs: Transaction) -> Bool {
 		lhs.id == rhs.id
