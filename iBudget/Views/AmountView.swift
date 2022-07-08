@@ -15,16 +15,16 @@ struct AmountView: View {
 	
 	var body: some View {
 		Group {
-			Text(transaction.sign)
+			Text(transaction.type == .debt ? "-" : "+")
 			// Make the amount positive because the sign is added above
-			+ Text(abs(transaction.amount), format: .currency(code: Locale.current.currencyCode ?? "USD"))
+			+ Text(transaction.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
 		}
 		.foregroundColor(differentiateWithoutColor ? .black : getColor(of: transaction))
 	}
 }
-
-struct AmountView_Previews: PreviewProvider {
-    static var previews: some View {
-		AmountView(transaction: Transaction.example)
-    }
-}
+//
+//struct AmountView_Previews: PreviewProvider {
+//    static var previews: some View {
+//		AmountView(transaction: Transaction.example)
+//    }
+//}
