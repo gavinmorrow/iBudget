@@ -16,19 +16,14 @@ struct ContentView: View {
 			TransactionsView()
 				.tabItem {
 					Label("Transactions", systemImage: "list.star")
-						.symbolVariant(.none)
 				}
 			
-			BudgetView()
-				.tabItem {
-					Label("Budget", systemImage: "dollarsign")
-						.symbolVariant(.none.circle)
+			StoresView()
+				.tabItem{
+					Label("Stores", systemImage: "location")
 				}
 		}
 		.environmentObject(viewModel)
-		.sheet(isPresented: $viewModel.showingSheet) {
-			CreateView(viewModel: viewModel)
-		}
 	}
 	
 	func authenticate() {
@@ -47,9 +42,9 @@ struct ContentView: View {
 	}
 }
 
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
-}
+//struct ContentView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		ContentView()
+//	}
+//}
 

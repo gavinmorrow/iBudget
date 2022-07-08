@@ -9,12 +9,10 @@ import SwiftUI
 
 /// Get the SwiftUI color of the transaction.
 func getColor(of transaction: Transaction) -> Color {
-	switch transaction.amount {
-		case let amount where amount < 0:
+	switch transaction.type {
+		case .debt:
 			return .red
-		case let amount where amount > 0:
+		case .credit:
 			return .green
-		default:
-			return .gray
 	}
 }

@@ -24,9 +24,9 @@ struct TransactionRow: View {
 	var body: some View {
 		HStack {
 			AmountView(transaction: transaction)
-				.font(.headline.monospaced().weight(.light))
-			// Prevent the amount from shrinking
-			// The person and notes will skrink to make up for it.
+				.font(.headline.monospaced())
+				// Prevent the amount from shrinking
+				// The person and notes will skrink to make up for it.
 				.fixedSize()
 			
 			
@@ -34,8 +34,7 @@ struct TransactionRow: View {
 				Divider()
 					.fixedSize()
 				
-				Text(transaction.person)
-					.fontWeight(.light)
+				Text(transaction.store?.name ?? "Unknown Store")
 					.lineLimit(1)
 				
 				Spacer()
@@ -50,19 +49,19 @@ struct TransactionRow: View {
 	}
 }
 
-struct TransactionRow_Previews: PreviewProvider {
-	static var previews: some View {
-		Group {
-			NavigationView {
-				List {
-					NavigationLink {
-						Text(Transaction.example.notes)
-					} label: {
-						TransactionRow(transaction: Transaction.example)
-					}
-				}
-				.navigationTitle("Budget")
-			}
-		}
-	}
-}
+//struct TransactionRow_Previews: PreviewProvider {
+//	static var previews: some View {
+//		Group {
+//			NavigationView {
+//				List {
+//					NavigationLink {
+//						Text(Transaction.example.notes)
+//					} label: {
+//						TransactionRow(transaction: Transaction.example)
+//					}
+//				}
+//				.navigationTitle("Budget")
+//			}
+//		}
+//	}
+//}

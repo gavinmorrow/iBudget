@@ -42,12 +42,12 @@ struct TransactionDetailView: View {
 		.background(differentiateWithoutColor
 					? nil
 					: (
-						(transaction.isPositive ? Color.green : Color.red)
+						(transaction.type == .credit ? Color.green : Color.red)
 							.opacity(0.05)
 							.ignoresSafeArea()
 					)
 		)
-		.navigationTitle("\(transaction.amountString), \(transaction.person)")
+		.navigationTitle("\(transaction.localizedAmount), \(transaction.store?.name ?? "Unknown Store")")
 		.navigationBarTitleDisplayMode(.inline)
 	}
 	
@@ -63,7 +63,7 @@ struct TransactionDetailView: View {
 				
 				Divider()
 				
-				Text(transaction.person)
+				Text(transaction.store?.name ?? "Unknown Store")
 					.font(.largeTitle)
 					.padding(.leading)
 			}
@@ -71,8 +71,8 @@ struct TransactionDetailView: View {
 	}
 }
 
-struct TransactionDetailView_Previews: PreviewProvider {
-	static var previews: some View {
-		TransactionDetailView(transaction: Transaction.example)
-	}
-}
+//struct TransactionDetailView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		TransactionDetailView(transaction: Transaction.example)
+//	}
+//}

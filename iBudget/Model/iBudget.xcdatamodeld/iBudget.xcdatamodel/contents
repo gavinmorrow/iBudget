@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Store" representedClassName="Store" syncable="YES">
+        <attribute name="optionalId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="optionalName" attributeType="String" defaultValueString="Unknown Store"/>
+        <attribute name="optionalNotes" attributeType="String" defaultValueString=""/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="store" inverseEntity="Transaction"/>
+    </entity>
+    <entity name="Transaction" representedClassName="Transaction" syncable="YES">
+        <attribute name="cents" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="isDebt" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="optionalDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="optionalId" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="optionalNotes" attributeType="String" defaultValueString=""/>
+        <relationship name="store" maxCount="1" deletionRule="Nullify" destinationEntity="Store" inverseName="transactions" inverseEntity="Store"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="optionalId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="Store" positionX="-54" positionY="27" width="128" height="89"/>
+        <element name="Transaction" positionX="-63" positionY="-18" width="128" height="119"/>
+    </elements>
+</model>

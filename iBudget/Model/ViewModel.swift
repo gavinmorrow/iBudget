@@ -6,92 +6,127 @@
 //
 
 import Foundation
+import CoreData
 
 @MainActor class ViewModel: ObservableObject {
+	// MARK: Core Data
+	let container: NSPersistentContainer
+	var moc: NSManagedObjectContext! = nil
+	
+	@Published private(set) var transactions: [Transaction] = []
+	@Published private(set) var stores: [Store] = []
+	
 	init() {
-		do {
-			guard let data: [Transaction] = try? FileManager().read(from: transactionsSavePath) else {
-				self.transactions = []
-				
-				struct ExitScope: Error {}
-				throw ExitScope()
+		// Create container
+		container = NSPersistentContainer(name: "iBudget")
+		container.loadPersistentStores { description, error in
+			if let error = error {
+				print("Error loading Core Data: \(error.localizedDescription)")
+				return
 			}
 			
-			self.transactions = data
-		} catch {}
-		
-		self.budget = Budget(amount: 30)
-		
-		let amountSpent = self.transactions.reduce(0) { sum, transaction in
-			sum + transaction.amount
+			self.moc = self.container.viewContext
+			self.moc.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 		}
-		// Negatate the amount b/c it is stored as a negative if is it being spent,
-		// but the `spend` function takes a positive about for being spent.
-		budget.spend(-amountSpent)
+		
+		// Load data
+		loadData()
 	}
 	
-	// MARK: Transactions
-	@Published private(set) var transactions: [Transaction]
-	
-	/// The path the transactions data is saved at.
-	let transactionsSavePath: URL = FileManager().documentsDirectory
-		.appendingPathComponent("transactions.json")
+	func loadData() {
+		let transactionsFetchRequest = NSFetchRequest<Transaction>(entityName: "Transaction")
+		let storesFetchRequest = NSFetchRequest<Store>(entityName: "Store")
+		
+		do {
+			//                                                        Sort reverse date order
+			//                                                            (newest on top)
+			transactions = try moc.fetch(transactionsFetchRequest).sorted { $0.date > $1.date }
+			stores = try moc.fetch(storesFetchRequest)
+		} catch {
+			print("Error loading Core Data data: \(error.localizedDescription)")
+		}
+	}
 	
 	/// Save data to disk
 	func save() {
-		// Write with encryption b/c transactions should be private.
-		try? FileManager().write(
-			transactions,
-			to: transactionsSavePath,
-			options: [.atomic, .completeFileProtection]
-		)
+		if moc.hasChanges {
+			do {
+				try moc.save()
+				loadData()
+				print("Saved data! :)")
+			} catch {
+				print("Error saving: \(error.localizedDescription)")
+			}
+		}
 	}
 	
 	/// Add a transaction to the transactions array.
 	///
 	/// Adds a transaction to the beginning of the transactions array.
-	func add(transaction: Transaction) {
-		// Update budget
-		// Negatate the amount b/c it is stored as a negative if is it being spent,
-		// but the `spend` function takes a positive about for being spent.
-		budget.spend(-transaction.amount)
+	/// - Precondition: `amount` must be > 0
+	func addTransaction(amount: Double, type: TransactionType = .debt, store: Store, notes: String = "", date: Date = Date()) {
+		guard amount > 0 else {
+			return
+		}
 		
 		// Add it to the list
-		transactions.insert(transaction, at: 0)
+		let transaction = Transaction(context: moc)
+		transaction.id = UUID()
+		transaction.amount = amount
+		transaction.type = type
+		transaction.store = store
+		transaction.notes = notes
+		transaction.date = date
+		
+		save()
+	}
+	
+	/// Add a store
+	func addStore(name: String, notes: String = "") {
+		let store = Store(context: moc)
+		store.id = UUID()
+		store.name = name
+		store.notes = notes
 		
 		save()
 	}
 	
 	/// Remove transactions from the transactions array.
-	func remove(at offsets: IndexSet) {
-		// Update budget
-		offsets.forEach { index in
-			let transaction = transactions[index]
-			budget.gain(-transaction.amount)
+	func removeTransactions(at offsets: IndexSet) {
+		for offset in offsets {
+			moc.delete(transactions[offset])
 		}
-		
-		// Remove it from the list
-		transactions.remove(atOffsets: offsets)
 		
 		save()
 	}
 	
-	/// Get all the transactions in a given time span
-	func transactions(in range: ClosedRange<Date>) -> [Transaction] {
-		transactions.filter { range.contains($0.date) }
+	/// Remove stores from the stores array.
+	///
+	/// Removes stores from the array. Any transactions that were attached to the store will have a `nil` store property.
+	func removeStores(at offsets: IndexSet) {
+		for offset in offsets {
+			moc.delete(stores[offset])
+		}
+		
+		save()
 	}
 	
-	/// Get all the transactions in a given time span
-	func transactions(in range: Range<Date>) -> [Transaction] {
-		transactions.filter { range.contains($0.date) }
+	/// Filter out the results of a Core Data model.
+	///
+	/// - Parameters:
+	///   + key: The key to filter the value.
+	///   + value: The value to filter
+	///   + comparison: How to match the value. Defaults to `"=="`
+	/// - Precondition: `comparison` must  be a valid `NSPredicate` way to match the value.
+	/// - Precondition: `entityName` must be a valid entity name in Core Data.
+	func filtered<T: NSManagedObject, Value: CVarArg>(entityName: String, key: String, value: Value, by comparison: String = "==") -> [T] {
+		let fetchRequest = NSFetchRequest<T>(entityName: entityName)
+		fetchRequest.predicate = NSPredicate(format: "%K \(comparison) %@", key, value)
+		
+		let fetchedResults = (try? moc.fetch(fetchRequest)) as [T]?
+		return fetchedResults ?? []
 	}
-	
-	
-	// MARK: Budget
-	@Published var budget: Budget
-	
 	
 	// MARK: State
-	@Published var showingSheet = false
 	@Published var isUnlocked = false
 }
