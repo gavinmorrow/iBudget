@@ -38,26 +38,6 @@ struct CreateTransactionView: View {
 					TextField("Amount", value: $amount, format: currencyFormatter)
 						.keyboardType(.decimalPad)
 						.focused($amountHasFocus)
-						.toolbar {
-							ToolbarItem(placement: .keyboard) {
-								// Done button
-								Button {
-									amountHasFocus = false
-								} label: {
-									Text("Done")
-								}
-							}
-							
-							ToolbarItem(placement: .keyboard) {
-								// Next button
-								Button {
-									amountHasFocus = false
-									typeHasFocus = true
-								} label: {
-									Text("Next")
-								}
-							}
-						}
 					
 					Picker("Type", selection: $type) {
 						ForEach(TransactionType.allCases) { type in
