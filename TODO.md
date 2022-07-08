@@ -1,6 +1,5 @@
 # BudgetTracker Todo List
 
-- [ ] CoreData
 - [ ] Widget
 - [ ] Changing transactions
 - [ ] Swipe actions
