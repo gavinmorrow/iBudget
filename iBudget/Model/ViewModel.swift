@@ -16,6 +16,13 @@ import CoreData
 	@Published private(set) var transactions: [Transaction] = []
 	@Published private(set) var stores: [Store] = []
 	
+	var typedAccountBalance: Double {
+		transactions.reduce(0.0, +)
+	}
+	var accountBalance: (amount: Double, type: TransactionType) {
+		(amount: abs(typedAccountBalance), type: typedAccountBalance < 0 ? .debt : .credit)
+	}
+	
 	init() {
 		// Create container
 		container = NSPersistentContainer(name: "iBudget")
