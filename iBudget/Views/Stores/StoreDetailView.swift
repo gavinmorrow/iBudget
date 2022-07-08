@@ -26,8 +26,10 @@ struct StoreDetailView: View {
 	}
 }
 
-//struct StoreDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StoreDetailView()
-//    }
-//}
+struct StoreDetailView_Previews: PreviewProvider {
+	static var previews: some View {
+		let viewModel = ViewModel()
+		let store = viewModel.addStore(name: "Test Store", notes: "Just a test :)")
+		return StoreDetailView(store: store)
+	}
+}
