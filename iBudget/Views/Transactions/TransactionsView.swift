@@ -52,24 +52,19 @@ struct TransactionsView: View {
 	}
 }
 
-//struct TransactionsView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		TransactionsView()
-//			.navigationTitle("iBudget")
-//			.environmentObject({ () -> ViewModel in
-//				let viewModel = ViewModel()
-//
-//				viewModel.transactions.forEach {
-//					viewModel.remove(
-//						at: IndexSet(integer: viewModel.transactions.firstIndex(of: $0)!)
-//					)
-//				}
-//
-//				for _ in 0..<5 {
-//					viewModel.add(transaction: Transaction.example)
-//				}
-//
-//				return viewModel
-//			}())
-//	}
-//}
+struct TransactionsView_Previews: PreviewProvider {
+	static var previews: some View {
+		let viewModel = ViewModel()
+		let store = viewModel.addStore(name: "Test Store")
+		
+		viewModel.removeTransactions(at: IndexSet(integersIn: 0..<viewModel.transactions.count))
+		
+		for i in 1...5 {
+			viewModel.addTransaction(amount: Double(i), type: i % 2 == 1 ? .credit : .debt, store: store)
+		}
+		
+		return TransactionsView()
+			.navigationTitle("iBudget")
+			.environmentObject(viewModel)
+	}
+}
