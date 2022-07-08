@@ -71,10 +71,15 @@ import CoreData
 	///
 	/// Adds a transaction to the beginning of the transactions array.
 	/// - Precondition: `amount` must be > 0
-	func addTransaction(amount: Double, type: TransactionType = .debt, store: Store, notes: String = "", date: Date = Date()) {
-		guard amount > 0 else {
-			return
-		}
+	@discardableResult
+	func addTransaction(
+		amount: Double,
+		type: TransactionType = .debt,
+		store: Store,
+		notes: String = "",
+		date: Date = Date()
+	) -> Transaction {
+		precondition(amount > 0, "`amount` must be greater than 0")
 		
 		// Add it to the list
 		let transaction = Transaction(context: moc)
@@ -86,16 +91,21 @@ import CoreData
 		transaction.date = date
 		
 		save()
+		
+		return transaction
 	}
 	
 	/// Add a store
-	func addStore(name: String, notes: String = "") {
+	@discardableResult
+	func addStore(name: String, notes: String = "") -> Store {
 		let store = Store(context: moc)
 		store.id = UUID()
 		store.name = name
 		store.notes = notes
 		
 		save()
+		
+		return store
 	}
 	
 	/// Remove transactions from the transactions array.
