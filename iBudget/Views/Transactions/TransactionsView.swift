@@ -14,23 +14,33 @@ struct TransactionsView: View {
 	
 	var body: some View {
 		NavigationView {
-			// TODO: balance in account
-			List {
-				Section {
-					ForEach(viewModel.transactions.sorted { $0.date > $1.date }) { transaction in
-						NavigationLink {
-							TransactionDetailView(transaction: transaction)
-						} label: {
-							TransactionRow(transaction: transaction)
+			VStack(alignment: .leading) {
+				Group {
+					Text(viewModel.accountBalance.type == .debt ? "Your account is " : "You have ")
+					+ Text(viewModel.accountBalance.amount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+					+ Text(viewModel.accountBalance.type == .debt ? " in debt." : " left in your account.")
+				}
+				.padding(.horizontal)
+				
+				List {
+					Section(header: Text("Transactions")) {
+						ForEach(viewModel.transactions.sorted { $0.date > $1.date }) { transaction in
+							NavigationLink {
+								TransactionDetailView(transaction: transaction)
+							} label: {
+								TransactionRow(transaction: transaction)
+							}
 						}
-					}
-					.onDelete { offsets in
-						Task { @MainActor in
-							viewModel.removeTransactions(at: offsets)
+						.onDelete { offsets in
+							Task { @MainActor in
+								viewModel.removeTransactions(at: offsets)
+							}
 						}
 					}
 				}
+				.listStyle(.insetGrouped)
 			}
+			.background(Color(.systemGray6))
 			.navigationTitle("iBudget")
 			.sheet(isPresented: $showingSheet) {
 				CreateTransactionView(viewModel: viewModel)
