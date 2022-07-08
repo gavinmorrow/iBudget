@@ -55,16 +55,22 @@ import CoreData
 	}
 	
 	/// Save data to disk
-	func save() {
+	/// - Returns: `true` if the data was saved correctly, `false` if there was an error or no data to save.
+	@discardableResult
+	func save() -> Bool {
 		if moc.hasChanges {
 			do {
 				try moc.save()
 				loadData()
 				print("Saved data! :)")
+				return true
 			} catch {
 				print("Error saving: \(error.localizedDescription)")
+				return false
 			}
 		}
+		
+		return false
 	}
 	
 	/// Add a transaction to the transactions array.
