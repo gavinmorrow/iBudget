@@ -19,10 +19,6 @@ struct ContentView: View {
 						.symbolVariant(.none)
 				}
 			
-			BudgetView()
-				.tabItem {
-					Label("Budget", systemImage: "dollarsign")
-						.symbolVariant(.none.circle)
 				}
 		}
 		.environmentObject(viewModel)

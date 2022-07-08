@@ -12,9 +12,6 @@ struct ListView: View {
 	
 	var body: some View {
 		List {
-			Section(header: Text("Amount left in budget")) {
-				Text(viewModel.budget.amountLeft, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-			}
 			
 			Section(header: Text("Transactions")) {
 				ForEach(viewModel.transactions) { transaction in
