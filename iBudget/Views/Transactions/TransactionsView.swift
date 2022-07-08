@@ -31,7 +31,7 @@ struct TransactionsView: View {
 					}
 				}
 			}
-			.navigationTitle("Transactions")
+			.navigationTitle("iBudget")
 			.sheet(isPresented: $showingSheet) {
 				CreateTransactionView(viewModel: viewModel)
 			}
