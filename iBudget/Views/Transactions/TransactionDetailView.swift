@@ -71,8 +71,11 @@ struct TransactionDetailView: View {
 	}
 }
 
-//struct TransactionDetailView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		TransactionDetailView(transaction: Transaction.example)
-//	}
-//}
+struct TransactionDetailView_Previews: PreviewProvider {
+	static var previews: some View {
+		let viewModel = ViewModel()
+		let store = viewModel.addStore(name: "Test Store", notes: "Just a test :)")
+		let transaction = viewModel.addTransaction(amount: 5, type: .debt, store: store, notes: "Just a test :)")
+		return TransactionDetailView(transaction: transaction)
+	}
+}
