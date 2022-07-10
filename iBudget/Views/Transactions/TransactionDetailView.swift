@@ -47,7 +47,7 @@ struct TransactionDetailView: View {
 							.ignoresSafeArea()
 					)
 		)
-		.navigationTitle("\(transaction.localizedAmount), \(transaction.store?.name ?? "Unknown Store")")
+		.navigationTitle(transaction.localizedAmount)
 		.navigationBarTitleDisplayMode(.inline)
 	}
 	
