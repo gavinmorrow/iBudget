@@ -47,9 +47,7 @@ extension Transaction {
 	}
 	
 	public var localizedAmount: String {
-		let formatter = NumberFormatter()
-		formatter.currencyCode = Locale.current.currencyCode ?? "USD"
-		return formatter.string(from: amount as NSNumber)!
+		amount.formatted(.currency(code: Locale.current.currencyCode ?? "USD"))
 	}
 	
 	public var date: Date {
