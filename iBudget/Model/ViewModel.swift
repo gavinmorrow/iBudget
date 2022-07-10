@@ -16,6 +16,13 @@ import CoreData
 	@Published private(set) var transactions: [Transaction] = []
 	@Published private(set) var stores: [Store] = []
 	
+	var typedAccountBalance: Double {
+		transactions.reduce(0.0, +)
+	}
+	var accountBalance: (amount: Double, type: TransactionType) {
+		(amount: abs(typedAccountBalance), type: typedAccountBalance < 0 ? .debt : .credit)
+	}
+	
 	init() {
 		// Create container
 		container = NSPersistentContainer(name: "iBudget")
@@ -48,26 +55,37 @@ import CoreData
 	}
 	
 	/// Save data to disk
-	func save() {
+	/// - Returns: `true` if the data was saved correctly, `false` if there was an error or no data to save.
+	@discardableResult
+	func save() -> Bool {
 		if moc.hasChanges {
 			do {
 				try moc.save()
 				loadData()
 				print("Saved data! :)")
+				return true
 			} catch {
 				print("Error saving: \(error.localizedDescription)")
+				return false
 			}
 		}
+		
+		return false
 	}
 	
 	/// Add a transaction to the transactions array.
 	///
 	/// Adds a transaction to the beginning of the transactions array.
 	/// - Precondition: `amount` must be > 0
-	func addTransaction(amount: Double, type: TransactionType = .debt, store: Store, notes: String = "", date: Date = Date()) {
-		guard amount > 0 else {
-			return
-		}
+	@discardableResult
+	func addTransaction(
+		amount: Double,
+		type: TransactionType = .debt,
+		store: Store,
+		notes: String = "",
+		date: Date = Date()
+	) -> Transaction {
+		precondition(amount > 0, "`amount` must be greater than 0")
 		
 		// Add it to the list
 		let transaction = Transaction(context: moc)
@@ -79,16 +97,21 @@ import CoreData
 		transaction.date = date
 		
 		save()
+		
+		return transaction
 	}
 	
 	/// Add a store
-	func addStore(name: String, notes: String = "") {
+	@discardableResult
+	func addStore(name: String, notes: String = "") -> Store {
 		let store = Store(context: moc)
 		store.id = UUID()
 		store.name = name
 		store.notes = notes
 		
 		save()
+		
+		return store
 	}
 	
 	/// Remove transactions from the transactions array.

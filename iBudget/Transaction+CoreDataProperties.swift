@@ -34,10 +34,20 @@ extension Transaction {
 		set { cents = Int32(newValue * 100) }
 	}
 	
+	/// The amount taking into consideration the `type` of the transaction.
+	///
+	/// - If it is a debt, the amount returned will be neative.
+	/// - If it is a credit, the amount returned will be positive.
+	public var typedAmount: Double {
+		if type == .debt {
+			return amount * -1
+		} else {
+			return amount
+		}
+	}
+	
 	public var localizedAmount: String {
-		let formatter = NumberFormatter()
-		formatter.currencyCode = Locale.current.currencyCode ?? "USD"
-		return formatter.string(from: amount as NSNumber)!
+		amount.formatted(.currency(code: Locale.current.currencyCode ?? "USD"))
 	}
 	
 	public var date: Date {
@@ -62,6 +72,16 @@ extension Transaction: Comparable {
 			return lhs.amount < rhs.amount
 		}
 		return lhs.type == .debt
+	}
+}
+
+extension Transaction {
+	public static func + (lhs: Transaction, rhs: Transaction) -> Double {
+		lhs.typedAmount + rhs.typedAmount
+	}
+	
+	public static func + (lhs: Double, rhs: Transaction) -> Double {
+		lhs + rhs.typedAmount
 	}
 }
 
