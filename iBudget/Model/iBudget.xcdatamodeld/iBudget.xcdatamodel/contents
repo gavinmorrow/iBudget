@@ -4,7 +4,7 @@
         <attribute name="optionalId" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="optionalName" attributeType="String" defaultValueString="Unknown Store"/>
         <attribute name="optionalNotes" attributeType="String" defaultValueString=""/>
-        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="store" inverseEntity="Transaction"/>
+        <relationship name="transactionsNSSet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="store" inverseEntity="Transaction"/>
     </entity>
     <entity name="Transaction" representedClassName="Transaction" syncable="YES">
         <attribute name="cents" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES"/>
@@ -12,7 +12,7 @@
         <attribute name="optionalDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="optionalId" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="optionalNotes" attributeType="String" defaultValueString=""/>
-        <relationship name="store" maxCount="1" deletionRule="Nullify" destinationEntity="Store" inverseName="transactions" inverseEntity="Store"/>
+        <relationship name="store" maxCount="1" deletionRule="Nullify" destinationEntity="Store" inverseName="transactionsNSSet" inverseEntity="Store"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="optionalId"/>
