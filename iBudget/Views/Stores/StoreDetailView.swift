@@ -11,18 +11,23 @@ struct StoreDetailView: View {
 	let store: Store
 	
 	var body: some View {
-		VStack(alignment: .leading) {
-			Text(store.name)
-				.font(.largeTitle)
-			Divider()
+		List {
+			Text(store.notes)
 			
-			ScrollView {
-				Text(store.notes)
+			Section(header: Text("Transactions")) {
+				ForEach(store.transactions.sorted()) { transaction in
+					NavigationLink {
+						TransactionDetailView(transaction: transaction)
+					} label: {
+						TransactionRow(transaction: transaction)
+					}
+				}
 			}
 		}
+		.listStyle(.inset)
 		.padding()
 		.navigationTitle(store.name)
-		.navigationBarTitleDisplayMode(.inline)
+		.navigationBarTitleDisplayMode(.large)
 	}
 }
 
