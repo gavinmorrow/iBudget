@@ -14,6 +14,17 @@ struct TransactionDetailView: View {
 	@Environment(\.horizontalSizeClass) var horizontalSizeClass
 	@Environment(\.sizeCategory) var typeSize
 	
+	private var backgroundColor: some View {
+		differentiateWithoutColor
+		? nil
+		: (
+			(transaction.type == .credit ? Color.green : Color.red)
+				.opacity(0.05)
+				.ignoresSafeArea()
+		)
+	}
+	
+	
 	var body: some View {
 		ScrollView {
 			VStack {
@@ -39,15 +50,8 @@ struct TransactionDetailView: View {
 			}
 			.padding()
 		}
-		.background(differentiateWithoutColor
-					? nil
-					: (
-						(transaction.type == .credit ? Color.green : Color.red)
-							.opacity(0.05)
-							.ignoresSafeArea()
-					)
-		)
 		.navigationTitle(transaction.localizedAmount)
+		.background(backgroundColor)
 		.navigationBarTitleDisplayMode(.inline)
 	}
 	
