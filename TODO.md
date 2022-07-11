@@ -1,6 +1,6 @@
 # BudgetTracker Todo List
 
-- [ ] Widget
+- [x] Widget
 - [ ] Changing transactions
 - [ ] Swipe actions
 - [ ] Authentication to view transactions

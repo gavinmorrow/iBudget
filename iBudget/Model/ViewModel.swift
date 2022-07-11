@@ -11,7 +11,7 @@ import CoreData
 @MainActor class ViewModel: ObservableObject {
 	// MARK: Core Data
 	let container: NSPersistentContainer
-	var moc: NSManagedObjectContext! = nil
+	var moc: NSManagedObjectContext
 	
 	@Published private(set) var transactions: [Transaction] = []
 	@Published private(set) var stores: [Store] = []
@@ -24,34 +24,17 @@ import CoreData
 	}
 	
 	init() {
-		// Create container
-		container = NSPersistentContainer(name: "iBudget")
-		container.loadPersistentStores { description, error in
-			if let error = error {
-				print("Error loading Core Data: \(error.localizedDescription)")
-				return
-			}
-			
-			self.moc = self.container.viewContext
-			self.moc.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-		}
-		
-		// Load data
-		loadData()
+		let (container, moc, transactions, stores) = loadData()
+		self.container = container
+		self.moc = moc
+		self.transactions = transactions
+		self.stores = stores
 	}
 	
-	func loadData() {
-		let transactionsFetchRequest = NSFetchRequest<Transaction>(entityName: "Transaction")
-		let storesFetchRequest = NSFetchRequest<Store>(entityName: "Store")
-		
-		do {
-			//                                                        Sort reverse date order
-			//                                                            (newest on top)
-			transactions = try moc.fetch(transactionsFetchRequest).sorted { $0.date > $1.date }
-			stores = try moc.fetch(storesFetchRequest)
-		} catch {
-			print("Error loading Core Data data: \(error.localizedDescription)")
-		}
+	func updateData() {
+		let (_, _, transactions, stores) = loadData()
+		self.transactions = transactions
+		self.stores = stores
 	}
 	
 	/// Save data to disk
@@ -61,7 +44,7 @@ import CoreData
 		if moc.hasChanges {
 			do {
 				try moc.save()
-				loadData()
+				updateData()
 				print("Saved data! :)")
 				return true
 			} catch {
