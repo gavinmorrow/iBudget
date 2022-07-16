@@ -40,9 +40,6 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
 	
-	let container: NSPersistentContainer
-	var moc: NSManagedObjectContext
-	
 	var transactions: [Transaction]
 	var balance: Double { transactions.reduce(4_242_424_242.42, +) }
 	
@@ -51,11 +48,7 @@ struct SimpleEntry: TimelineEntry {
 		self.date = date
 		self.configuration = configuration
 		
-		// load core data
-		let (container, moc, transactions, _) = loadData()
-		self.container = container
-		self.moc = moc
-		self.transactions = transactions
+		transactions = dataController.loadDataArray()
 	}
 }
 

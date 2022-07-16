@@ -39,8 +39,10 @@
 		86EF9623287B7D86004F0379 /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8682C99C28770FD20081E284 /* Transaction+CoreDataClass.swift */; };
 		86EF9624287B7D86004F0379 /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8682C99D28770FD20081E284 /* Transaction+CoreDataProperties.swift */; };
 		86EF9625287B7D86004F0379 /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8682C99728770F050081E284 /* Store+CoreDataProperties.swift */; };
-		86EF9627287B838B004F0379 /* loadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EF9626287B838B004F0379 /* loadData.swift */; };
-		86EF9628287B838B004F0379 /* loadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EF9626287B838B004F0379 /* loadData.swift */; };
+		86EF962A287E2270004F0379 /* Double-rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EF9629287E2270004F0379 /* Double-rounded.swift */; };
+		86EF962C287E231C004F0379 /* Double-rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EF9629287E2270004F0379 /* Double-rounded.swift */; };
+		86EF962E287E2E9E004F0379 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EF962D287E2E9E004F0379 /* DataController.swift */; };
+		86EF962F287E2E9F004F0379 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EF962D287E2E9E004F0379 /* DataController.swift */; };
 		86FE9FA22870FA5A009A6654 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA12870FA5A009A6654 /* TransactionsView.swift */; };
 		86FE9FA62874DDE9009A6654 /* String-deletingPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA52874DDE9009A6654 /* String-deletingPrefix.swift */; };
 /* End PBXBuildFile section */
@@ -98,7 +100,8 @@
 		86EF9614287B7CC9004F0379 /* BalanceWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = BalanceWidget.intentdefinition; sourceTree = "<group>"; };
 		86EF9615287B7CCC004F0379 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86EF9617287B7CCC004F0379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		86EF9626287B838B004F0379 /* loadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadData.swift; sourceTree = "<group>"; };
+		86EF9629287E2270004F0379 /* Double-rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double-rounded.swift"; path = "iBudget/Helper/Double-rounded.swift"; sourceTree = SOURCE_ROOT; };
+		86EF962D287E2E9E004F0379 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataController.swift; path = iBudget/Model/DataController.swift; sourceTree = SOURCE_ROOT; };
 		86FE9FA12870FA5A009A6654 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		86FE9FA52874DDE9009A6654 /* String-deletingPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String-deletingPrefix.swift"; path = "iBudget/Helper/String-deletingPrefix.swift"; sourceTree = SOURCE_ROOT; };
 		86FE9FAF287595CA009A6654 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -142,7 +145,7 @@
 				8682C9812877049D0081E284 /* iBudget.xcdatamodeld */,
 				8682C98A28770A620081E284 /* TransactionType.swift */,
 				8668937B28708294002FE51D /* ViewModel.swift */,
-				86EF9626287B838B004F0379 /* loadData.swift */,
+				86EF962D287E2E9E004F0379 /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				86FE9FA52874DDE9009A6654 /* String-deletingPrefix.swift */,
 				867DED52286E579F00240434 /* getTransactionColor.swift */,
 				867DED4F286E41EA00240434 /* FileManager-Extension.swift */,
+				86EF9629287E2270004F0379 /* Double-rounded.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -356,7 +360,9 @@
 				8682C99F28770FD20081E284 /* Transaction+CoreDataProperties.swift in Sources */,
 				86FE9FA22870FA5A009A6654 /* TransactionsView.swift in Sources */,
 				863BB1EF28651D8300253B0F /* TransactionRow.swift in Sources */,
+				86EF962A287E2270004F0379 /* Double-rounded.swift in Sources */,
 				867DED4E2869C62200240434 /* CreateTransactionView.swift in Sources */,
+				86EF962E287E2E9E004F0379 /* DataController.swift in Sources */,
 				867DED53286E579F00240434 /* getTransactionColor.swift in Sources */,
 				8682C9A8287740830081E284 /* StoresView.swift in Sources */,
 				8682C99E28770FD20081E284 /* Transaction+CoreDataClass.swift in Sources */,
@@ -364,7 +370,6 @@
 				86FE9FA62874DDE9009A6654 /* String-deletingPrefix.swift in Sources */,
 				8682C99B28770F050081E284 /* Store+CoreDataProperties.swift in Sources */,
 				8682C9832877049D0081E284 /* iBudget.xcdatamodeld in Sources */,
-				86EF9627287B838B004F0379 /* loadData.swift in Sources */,
 				86B1CD492864C10400F48CA4 /* IBudgetApp.swift in Sources */,
 				8682C99A28770F050081E284 /* Store+CoreDataClass.swift in Sources */,
 			);
@@ -378,9 +383,10 @@
 				86EF9625287B7D86004F0379 /* Store+CoreDataProperties.swift in Sources */,
 				86EF9624287B7D86004F0379 /* Transaction+CoreDataProperties.swift in Sources */,
 				86EF9613287B7CC9004F0379 /* BalanceWidget.swift in Sources */,
+				86EF962C287E231C004F0379 /* Double-rounded.swift in Sources */,
+				86EF962F287E2E9F004F0379 /* DataController.swift in Sources */,
 				86EF9622287B7D86004F0379 /* Store+CoreDataClass.swift in Sources */,
 				86EF9623287B7D86004F0379 /* Transaction+CoreDataClass.swift in Sources */,
-				86EF9628287B838B004F0379 /* loadData.swift in Sources */,
 				86EF9618287B7CCC004F0379 /* BalanceWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

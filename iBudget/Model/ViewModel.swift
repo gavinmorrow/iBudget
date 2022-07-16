@@ -9,12 +9,8 @@ import Foundation
 import CoreData
 
 @MainActor class ViewModel: ObservableObject {
-	// MARK: Core Data
-	let container: NSPersistentContainer
-	var moc: NSManagedObjectContext
-	
-	@Published private(set) var transactions: [Transaction] = []
-	@Published private(set) var stores: [Store] = []
+	@Published private(set) var transactions: [Transaction] = dataController.loadDataArray()
+	@Published private(set) var stores: [Store] = dataController.loadDataArray()
 	
 	var typedAccountBalance: Double {
 		transactions.reduce(0.0, +)
@@ -23,27 +19,18 @@ import CoreData
 		(amount: abs(typedAccountBalance), type: typedAccountBalance < 0 ? .debt : .credit)
 	}
 	
-	init() {
-		let (container, moc, transactions, stores) = loadData()
-		self.container = container
-		self.moc = moc
-		self.transactions = transactions
-		self.stores = stores
-	}
-	
 	func updateData() {
-		let (_, _, transactions, stores) = loadData()
-		self.transactions = transactions
-		self.stores = stores
+		transactions = dataController.loadDataArray()
+		stores       = dataController.loadDataArray()
 	}
 	
 	/// Save data to disk
 	/// - Returns: `true` if the data was saved correctly, `false` if there was an error or no data to save.
 	@discardableResult
 	func save() -> Bool {
-		if moc.hasChanges {
+		if dataController.moc.hasChanges {
 			do {
-				try moc.save()
+				try dataController.moc.save()
 				updateData()
 				print("Saved data! :)")
 				return true
@@ -71,7 +58,7 @@ import CoreData
 		precondition(amount > 0, "`amount` must be greater than 0")
 		
 		// Add it to the list
-		let transaction = Transaction(context: moc)
+		let transaction = Transaction(context: dataController.moc)
 		transaction.id = UUID()
 		transaction.amount = amount
 		transaction.type = type
@@ -87,7 +74,7 @@ import CoreData
 	/// Add a store
 	@discardableResult
 	func addStore(name: String, notes: String = "") -> Store {
-		let store = Store(context: moc)
+		let store = Store(context: dataController.moc)
 		store.id = UUID()
 		store.name = name
 		store.notes = notes
@@ -100,7 +87,7 @@ import CoreData
 	/// Remove transactions from the transactions array.
 	func removeTransactions(at offsets: IndexSet) {
 		for offset in offsets {
-			moc.delete(transactions[offset])
+			dataController.moc.delete(transactions[offset])
 		}
 		
 		save()
@@ -111,26 +98,10 @@ import CoreData
 	/// Removes stores from the array. Any transactions that were attached to the store will have a `nil` store property.
 	func removeStores(at offsets: IndexSet) {
 		for offset in offsets {
-			moc.delete(stores[offset])
+			dataController.moc.delete(stores[offset])
 		}
 		
 		save()
-	}
-	
-	/// Filter out the results of a Core Data model.
-	///
-	/// - Parameters:
-	///   + key: The key to filter the value.
-	///   + value: The value to filter
-	///   + comparison: How to match the value. Defaults to `"=="`
-	/// - Precondition: `comparison` must  be a valid `NSPredicate` way to match the value.
-	/// - Precondition: `entityName` must be a valid entity name in Core Data.
-	func filtered<T: NSManagedObject, Value: CVarArg>(entityName: String, key: String, value: Value, by comparison: String = "==") -> [T] {
-		let fetchRequest = NSFetchRequest<T>(entityName: entityName)
-		fetchRequest.predicate = NSPredicate(format: "%K \(comparison) %@", key, value)
-		
-		let fetchedResults = (try? moc.fetch(fetchRequest)) as [T]?
-		return fetchedResults ?? []
 	}
 	
 	// MARK: State
