@@ -49,7 +49,7 @@ struct SimpleEntry: TimelineEntry {
 		if balance > 1_000_000_000_000_000_000_000 {
 			// "Zillion" is a fake number, but fun to use
 			// If someone has this much money,
-			// they don't need to see the exact amount in the widget
+			// they don't need to see the exact amount (in the widget)
 			return "\(balance.rounded(to: 6)) Zillion"
 		} else if balance < 1_000_000 {
 			return balance.formatted(.currency(code: Locale.current.currencyCode ?? "USD"))
