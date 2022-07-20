@@ -32,10 +32,10 @@ import CoreData
 			do {
 				try dataController.moc.save()
 				updateData()
-				print("Saved data! :)")
+				dPrint("Saved data! :)")
 				return true
 			} catch {
-				print("Error saving: \(error.localizedDescription)")
+				dPrint("Error saving: \(error.localizedDescription)")
 				return false
 			}
 		}
