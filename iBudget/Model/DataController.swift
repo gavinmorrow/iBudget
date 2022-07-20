@@ -13,16 +13,22 @@ let dataController = DataController(name: "iBudget")
 class DataController {
 	let persistenContainerName: String
 	
-	lazy var persistentContainer: NSPersistentContainer = { () -> NSPersistentContainer in
+	lazy var persistentContainer: NSPersistentContainer = { () -> SharedAppGroupNSPersistentContainer in
+		dPrint("Container start")
+		
 		// Create container
-		let container = NSPersistentContainer(name: persistenContainerName)
+		let container = SharedAppGroupNSPersistentContainer(name: persistenContainerName)
 		container.loadPersistentStores { description, error in
 			if let error = error {
-				print("Error loading Core Data: \(error.localizedDescription)")
+				dPrint("Error loading Core Data: \(error.localizedDescription)")
 				return
 			}
+			
 			container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+			dPrint("Container stores loaded: \(description.description)")
 		}
+		
+		dPrint("Returning container")
 		
 		return container
 	}()
@@ -30,7 +36,9 @@ class DataController {
 	var moc: NSManagedObjectContext { persistentContainer.viewContext }
 	
 	init(name: String) {
-		persistenContainerName = name
+		dPrint("DataController init")
+		
+		self.persistenContainerName = name
 	}
 	
 	func loadPersistentContainer() {
@@ -61,7 +69,7 @@ extension DataController {
 		)
 		
 		guard fetchedResults.count > 0 else {
-			print("WARNING: No CoreData results were found.")
+			dPrint("WARNING: No CoreData results were found.")
 			return defaultValue
 		}
 		
@@ -90,5 +98,20 @@ extension DataController {
 		if let resultsLimit = resultsLimit { fetchRequest.fetchLimit = resultsLimit }
 		
 		return (try? moc.fetch(fetchRequest)) ?? defaultValue
+	}
+}
+
+// iBudget Extension
+class SharedAppGroupNSPersistentContainer: NSPersistentContainer {
+	override open class func defaultDirectoryURL() -> URL {
+		let sharedAppGroupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.gm.iBudget")
+		
+		guard sharedAppGroupURL != nil else {
+			fatalError("|> Shared app group URL not found!")
+		}
+		
+		dPrint("Shared app group URL found: \(String(describing: sharedAppGroupURL!))")
+		
+		return sharedAppGroupURL!
 	}
 }
