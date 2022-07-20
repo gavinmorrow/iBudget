@@ -35,7 +35,7 @@ struct SimpleEntry: TimelineEntry {
 	let configuration: ConfigurationIntent
 	
 	var transactions: [Transaction]
-	var balance: Double { transactions.reduce(4_242_424.24, +) }
+	var balance: Double { transactions.reduce(0, +) }
 	var localizedBalance: String {
 		let numbers = ["Quintillion", "Quadrillion", "Trillion", "Billion", "Million"]
 		
