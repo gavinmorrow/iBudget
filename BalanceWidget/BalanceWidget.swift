@@ -36,6 +36,8 @@ struct SimpleEntry: TimelineEntry {
 	
 	var transactions: [Transaction]
 	var balance: Double { transactions.reduce(0, +) }
+	
+	/// The balance in a human readable format.
 	var localizedBalance: String {
 		let numbers = ["Quintillion", "Quadrillion", "Trillion", "Billion", "Million"]
 		
