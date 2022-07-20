@@ -61,7 +61,6 @@ struct SimpleEntry: TimelineEntry {
 		while tempBal >= 10 && i < numbers.count - 1 {
 			tempBal /= 1_000
 			i += 1
-			print(tempBal, i)
 		}
 		
 		// Ensure that `i` isn't too high
