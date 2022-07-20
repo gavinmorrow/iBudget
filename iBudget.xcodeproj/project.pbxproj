@@ -191,7 +191,6 @@
 		86B1CD3C2864C10400F48CA4 = {
 			isa = PBXGroup;
 			children = (
-				861AA90228873F0A0003FA94 /* BalanceWidgetExtension.entitlements */,
 				867DED51286E563400240434 /* TODO.md */,
 				8682C99C28770FD20081E284 /* Transaction+CoreDataClass.swift */,
 				8682C99D28770FD20081E284 /* Transaction+CoreDataProperties.swift */,
@@ -238,6 +237,7 @@
 		86EF9611287B7CC9004F0379 /* BalanceWidget */ = {
 			isa = PBXGroup;
 			children = (
+				861AA90228873F0A0003FA94 /* BalanceWidgetExtension.entitlements */,
 				86EF9612287B7CC9004F0379 /* BalanceWidget.swift */,
 				86EF9614287B7CC9004F0379 /* BalanceWidget.intentdefinition */,
 				86EF9615287B7CCC004F0379 /* Assets.xcassets */,
