@@ -47,7 +47,7 @@ struct SimpleEntry: TimelineEntry {
 			// If someone has this much money,
 			// they don't need to see the exact amount (in the widget)
 			return "\(balance.rounded(to: 6)) Zillion"
-		} else if balance < 1_000_000 {
+		} else if balance / 1_000_000 < 10 {
 			return balance.formatted(.currency(code: Locale.current.currencyCode ?? "USD"))
 		}
 		
@@ -58,7 +58,7 @@ struct SimpleEntry: TimelineEntry {
 		
 		//                       subtract 1 otherwise `i`
 		//                       would become `numbers.count`.
-		while tempBal > 1 && i < numbers.count - 1 {
+		while tempBal >= 10 && i < numbers.count - 1 {
 			tempBal /= 1_000
 			i += 1
 			print(tempBal, i)
