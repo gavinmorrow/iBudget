@@ -103,7 +103,7 @@ struct BalanceWidgetEntryView : View {
 
 @main
 struct BalanceWidget: Widget {
-	let kind: String = "BalanceWidget"
+	let kind: String = "com.gm.iBudget.BalanceWidget"
 	
 	var body: some WidgetConfiguration {
 		IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
