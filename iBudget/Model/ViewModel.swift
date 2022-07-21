@@ -77,7 +77,7 @@ import WidgetKit
 		transaction.date = date
 		
 		save()
-		updateWidgets(forKind: .balance)
+		WidgetsController.updateWidget(ofKind: .balance)
 		
 		return transaction
 	}
@@ -89,7 +89,7 @@ import WidgetKit
 		}
 		
 		save()
-		updateWidgets(forKind: .balance)
+		WidgetsController.updateWidget(ofKind: .balance)
 	}
 	
 	/// Add a store
@@ -114,14 +114,6 @@ import WidgetKit
 		}
 		
 		save()
-	}
-	
-	enum WidgetKind: String {
-		case balance = "BalanceWidget"
-	}
-	
-	func updateWidgets(forKind kind: WidgetKind) {
-		WidgetCenter.shared.reloadTimelines(ofKind: "com.gm.iBudget.\(kind.rawValue)")
 	}
 	
 	@Published var isUnlocked = false
