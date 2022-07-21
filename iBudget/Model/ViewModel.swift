@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import WidgetKit
 
 @MainActor class ViewModel: ObservableObject {
 	@Published private(set) var transactions: [Transaction] = dataController.loadDataArray()
@@ -67,6 +68,7 @@ import CoreData
 		transaction.date = date
 		
 		save()
+		updateWidgets(forKind: .balance)
 		
 		return transaction
 	}
@@ -78,6 +80,7 @@ import CoreData
 		}
 		
 		save()
+		updateWidgets(forKind: .balance)
 	}
 	
 	/// Add a store
@@ -102,6 +105,14 @@ import CoreData
 		}
 		
 		save()
+	}
+	
+	enum WidgetKind: String {
+		case balance = "BalanceWidget"
+	}
+	
+	func updateWidgets(forKind kind: WidgetKind) {
+		WidgetCenter.shared.reloadTimelines(ofKind: "com.gm.iBudget.\(kind.rawValue)")
 	}
 	
 	@Published var isUnlocked = false
