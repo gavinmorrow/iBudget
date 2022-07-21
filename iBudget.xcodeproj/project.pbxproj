@@ -29,6 +29,7 @@
 		86B1CD4B2864C10400F48CA4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1CD4A2864C10400F48CA4 /* ContentView.swift */; };
 		86B1CD4D2864C10700F48CA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B1CD4C2864C10700F48CA4 /* Assets.xcassets */; };
 		86B1CD502864C10700F48CA4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B1CD4F2864C10700F48CA4 /* Preview Assets.xcassets */; };
+		86DFEAD02889D99C0023B1E5 /* WidgetsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DFEACF2889D99C0023B1E5 /* WidgetsController.swift */; };
 		86E06DF1288897AC007D89D7 /* iBudget.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8682C9812877049D0081E284 /* iBudget.xcdatamodeld */; };
 		86EF960F287B7CC9004F0379 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FE9FAF287595CA009A6654 /* WidgetKit.framework */; };
 		86EF9610287B7CC9004F0379 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FE9FB1287595CA009A6654 /* SwiftUI.framework */; };
@@ -100,6 +101,7 @@
 		86B1CD4A2864C10400F48CA4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		86B1CD4C2864C10700F48CA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86B1CD4F2864C10700F48CA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		86DFEACF2889D99C0023B1E5 /* WidgetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsController.swift; sourceTree = "<group>"; };
 		86EF960E287B7CC9004F0379 /* BalanceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BalanceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		86EF9612287B7CC9004F0379 /* BalanceWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceWidget.swift; sourceTree = "<group>"; };
 		86EF9614287B7CC9004F0379 /* BalanceWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = BalanceWidget.intentdefinition; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				86DFEACE288965DF0023B1E5 /* CoreData */,
 				8668937B28708294002FE51D /* ViewModel.swift */,
+				86DFEACF2889D99C0023B1E5 /* WidgetsController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				869284692888BE0400166A85 /* dPrint.swift in Sources */,
 				8682C99F28770FD20081E284 /* Transaction+CoreDataProperties.swift in Sources */,
 				86FE9FA22870FA5A009A6654 /* TransactionsView.swift in Sources */,
+				86DFEAD02889D99C0023B1E5 /* WidgetsController.swift in Sources */,
 				863BB1EF28651D8300253B0F /* TransactionRow.swift in Sources */,
 				86EF962A287E2270004F0379 /* Double-rounded.swift in Sources */,
 				867DED4E2869C62200240434 /* CreateTransactionView.swift in Sources */,
