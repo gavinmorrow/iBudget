@@ -92,6 +92,14 @@ extension DataController {
 	) -> [T] {
 		loadPersistentContainer()
 		
+		dPrint("""
+Loading data array for \(T.entity().name ?? "Unknown Entity").
+Sort Descriptors: \(sortDescriptors.map { $0.debugDescription })
+Predicate:        \(String(describing: predicate?.debugDescription))
+Results Limit:    \(String(describing: resultsLimit))
+Default Value:    \(defaultValue.debugDescription)
+""")
+		
 		let fetchRequest = T.fetchRequest() as! NSFetchRequest<T>
 		fetchRequest.sortDescriptors = sortDescriptors
 		fetchRequest.predicate = predicate
