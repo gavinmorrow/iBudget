@@ -10,7 +10,11 @@ import CoreData
 import WidgetKit
 
 @MainActor class ViewModel: ObservableObject {
-	@Published private(set) var transactions: [Transaction] = dataController.loadDataArray()
+	@Published private(set) var transactions: [Transaction] = dataController.loadDataArray(
+		sortDescriptors: [
+			NSSortDescriptor(keyPath: \Transaction.optionalDate, ascending: false)
+		]
+	)
 	@Published private(set) var stores: [Store] = dataController.loadDataArray()
 	
 	var typedAccountBalance: Double {
@@ -21,8 +25,13 @@ import WidgetKit
 	}
 	
 	func updateData() {
-		transactions = dataController.loadDataArray()
-		stores       = dataController.loadDataArray()
+		transactions = dataController.loadDataArray(
+			sortDescriptors: [
+				NSSortDescriptor(keyPath: \Transaction.optionalDate, ascending: false)
+			]
+		)
+		
+		stores = dataController.loadDataArray()
 	}
 	
 	/// Save data to disk
