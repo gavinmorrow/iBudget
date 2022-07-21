@@ -71,6 +71,15 @@ import CoreData
 		return transaction
 	}
 	
+	/// Remove transactions from the transactions array.
+	func removeTransactions(at offsets: IndexSet) {
+		for offset in offsets {
+			dataController.moc.delete(transactions[offset])
+		}
+		
+		save()
+	}
+	
 	/// Add a store
 	@discardableResult
 	func addStore(name: String, notes: String = "") -> Store {
@@ -84,15 +93,6 @@ import CoreData
 		return store
 	}
 	
-	/// Remove transactions from the transactions array.
-	func removeTransactions(at offsets: IndexSet) {
-		for offset in offsets {
-			dataController.moc.delete(transactions[offset])
-		}
-		
-		save()
-	}
-	
 	/// Remove stores from the stores array.
 	///
 	/// Removes stores from the array. Any transactions that were attached to the store will have a `nil` store property.
@@ -104,6 +104,5 @@ import CoreData
 		save()
 	}
 	
-	// MARK: State
 	@Published var isUnlocked = false
 }
