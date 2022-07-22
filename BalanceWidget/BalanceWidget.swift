@@ -84,9 +84,7 @@ struct SimpleEntry: TimelineEntry {
 				case .unknown, .allTime:
 					return .distantPast
 				case .calendarWeek:
-					let dateInterval = calendar.dateInterval(of: .weekOfYear, for: date)
-					log("Calendar Week dateInterval: \(dateInterval?.debugDescription ?? "nil").\n Start: \(dateInterval?.start.debugDescription ?? "nil")")
-					return dateInterval?.start
+					return calendar.dateInterval(of: .weekOfYear, for: date)?.start
 				case .calendarMonth:
 					return calendar.dateComponents([.year, .month], from: date).date
 				case .calendarYear:
