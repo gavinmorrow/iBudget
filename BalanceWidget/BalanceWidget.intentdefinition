@@ -37,7 +37,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>calendar week</string>
+					<string>week to date</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>bVcGUP</string>
 					<key>INEnumValueIndex</key>
@@ -47,7 +47,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>calendar month</string>
+					<string>month to date</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>891bRz</string>
 					<key>INEnumValueIndex</key>
@@ -57,7 +57,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>calendar year</string>
+					<string>year to date</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>2NZbuu</string>
 					<key>INEnumValueIndex</key>
