@@ -39,34 +39,22 @@ struct SimpleEntry: TimelineEntry {
 	
 	/// The balance in a human readable format.
 	var localizedBalance: String {
-		let numbers = ["Quintillion", "Quadrillion", "Trillion", "Billion", "Million"]
+		let currencyCode = Locale.current.currencyCode ?? "USD"
 		
-		//           3 powers higher than quintillion
-		if balance > 1_000_000_000_000_000_000_000 {
-			// "Zillion" is a fake number, but fun to use
-			// If someone has this much money,
-			// they don't need to see the exact amount (in the widget)
-			return "\(balance.rounded(to: 6)) Zillion"
-		} else if balance / 1_000_000 < 10 {
-			return balance.formatted(.currency(code: Locale.current.currencyCode ?? "USD"))
+		if balance < 1_000 /* 1 thousand */ {
+			return balance.formatted(.currency(code: currencyCode))
 		}
 		
-		var tempBal = balance / 1_000_000
+		let numbers = ["Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion"]
 		
-		/// An index of `numbers`.
-		var i: Int = 0
-		
-		//                       subtract 1 otherwise `i`
-		//                       would become `numbers.count`.
-		while tempBal >= 10 && i < numbers.count - 1 {
-			tempBal /= 1_000
+		var i = 0
+		var num = 1_000.0 /* 1 thousand */
+		while balance / 1_000 > num {
 			i += 1
+			num *= 1_000
 		}
 		
-		// Ensure that `i` isn't too high
-		if i < numbers.count { i = numbers.count - 1 }
-		
-		return "\(tempBal.rounded(to: 2)) \(numbers[i])"
+		return "\((balance / num).rounded(to: configuration.decimalPlaces as! Int)) \(numbers[i])"
 	}
 	
 	init(date: Date, configuration: TimeSpanIntent) {

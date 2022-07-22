@@ -122,7 +122,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>4</integer>
+			<integer>6</integer>
 			<key>INIntentName</key>
 			<string>TimeSpan</string>
 			<key>INIntentParameters</key>
@@ -194,6 +194,85 @@
 					<integer>4</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Decimal Places</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>QdKwhW</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>2</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<integer>2</integer>
+						<key>INIntentParameterMetadataMaximumValue</key>
+						<integer>6</integer>
+						<key>INIntentParameterMetadataType</key>
+						<string>Stepper</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>decimalPlaces</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogFormatString</key>
+							<string>How many decimal places should be shown?</string>
+							<key>INIntentParameterPromptDialogFormatStringID</key>
+							<string>zHkUg6</string>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>6</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+					<key>INIntentParameterUnsupportedReasons</key>
+					<array>
+						<dict>
+							<key>INIntentParameterUnsupportedReasonCode</key>
+							<string>negativeNumbersNotSupported</string>
+							<key>INIntentParameterUnsupportedReasonDefault</key>
+							<true/>
+							<key>INIntentParameterUnsupportedReasonFormatString</key>
+							<string>${displayName} can’t be negative.</string>
+							<key>INIntentParameterUnsupportedReasonFormatStringID</key>
+							<string>cEtnbK</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterUnsupportedReasonCode</key>
+							<string>greaterThanMaximumValue</string>
+							<key>INIntentParameterUnsupportedReasonDefault</key>
+							<true/>
+							<key>INIntentParameterUnsupportedReasonFormatString</key>
+							<string>${displayName} can’t be higher than ${maximumValue}.</string>
+							<key>INIntentParameterUnsupportedReasonFormatStringID</key>
+							<string>p1FF4Z</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterUnsupportedReasonCode</key>
+							<string>lessThanMinimumValue</string>
+							<key>INIntentParameterUnsupportedReasonDefault</key>
+							<true/>
+							<key>INIntentParameterUnsupportedReasonFormatString</key>
+							<string>${displayName} can’t be lower than ${minimumValue}.</string>
+							<key>INIntentParameterUnsupportedReasonFormatStringID</key>
+							<string>i1Eawq</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>
