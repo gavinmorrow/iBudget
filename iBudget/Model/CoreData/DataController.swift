@@ -11,11 +11,11 @@ import CoreData
 let dataController = DataController(name: "iBudget")
 
 class DataController {
-	let persistenContainerName: String
+	let persistentContainerName: String
 	
 	lazy var persistentContainer: NSPersistentContainer = { () -> SharedAppGroupNSPersistentContainer in
 		// Create container
-		let container = SharedAppGroupNSPersistentContainer(name: persistenContainerName)
+		let container = SharedAppGroupNSPersistentContainer(name: persistentContainerName)
 		container.loadPersistentStores { description, error in
 			if let error = error {
 				log("Error loading Core Data: \(error.localizedDescription)")
@@ -32,8 +32,8 @@ class DataController {
 	var moc: NSManagedObjectContext { persistentContainer.viewContext }
 	
 	init(name: String) {
-		self.persistenContainerName = name
 		log(#"DataController starting for persistent container "\(name)""#)
+		self.persistentContainerName = name
 	}
 	
 	func loadPersistentContainer() {
