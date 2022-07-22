@@ -10,6 +10,7 @@ import CoreData
 
 let dataController = DataController(name: "iBudget")
 
+/// A class to manage CoreData loading and saving.
 class DataController {
 	let persistentContainerName: String
 	
@@ -95,6 +96,27 @@ extension DataController {
 		if let resultsLimit = resultsLimit { fetchRequest.fetchLimit = resultsLimit }
 		
 		return (try? moc.fetch(fetchRequest)) ?? defaultValue
+	}
+}
+
+extension DataController {
+	/// Save data to disk
+	/// - Returns: `true` if the data was saved correctly, `false` if there was an error or no data to save.
+	@discardableResult
+	func save() -> Bool {
+		if moc.hasChanges {
+			do {
+				try dataController.moc.save()
+				
+				log("Saved data!")
+				return true
+			} catch {
+				log("Error saving data: \(error.localizedDescription)")
+				return false
+			}
+		}
+		
+		return false
 	}
 }
 
