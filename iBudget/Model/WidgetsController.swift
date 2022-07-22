@@ -9,7 +9,7 @@ import class WidgetKit.WidgetCenter
 
 enum WidgetsController {
 	enum WidgetKind: String {
-		case balance = "BalanceWidget"
+		case balance = "com.gm.iBudget.BalanceWidget"
 	}
 	
 	static func updateAllWidgets() {
@@ -18,7 +18,7 @@ enum WidgetsController {
 	}
 	
 	static func updateWidget(ofKind kind: String) {
-		log("Reloading widget of kind com.gm.iBudget.\(kind)")
+		log("Reloading widget of kind \(kind)")
 		WidgetCenter.shared.reloadTimelines(ofKind: kind)
 	}
 	
