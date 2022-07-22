@@ -10,12 +10,8 @@ import CoreData
 import WidgetKit
 
 @MainActor class ViewModel: ObservableObject {
-	@Published private(set) var transactions: [Transaction] = dataController.loadDataArray(
-		sortDescriptors: [
-			NSSortDescriptor(keyPath: \Transaction.optionalDate, ascending: false)
-		]
-	)
-	@Published private(set) var stores: [Store] = dataController.loadDataArray()
+	@Published private(set) var transactions: [Transaction]! = nil
+	@Published private(set) var stores: [Store]! = nil
 	
 	var typedAccountBalance: Double {
 		transactions.reduce(0.0, +)
@@ -34,23 +30,13 @@ import WidgetKit
 		stores = dataController.loadDataArray()
 	}
 	
-	/// Save data to disk
-	/// - Returns: `true` if the data was saved correctly, `false` if there was an error or no data to save.
-	@discardableResult
-	func save() -> Bool {
-		if dataController.moc.hasChanges {
-			do {
-				try dataController.moc.save()
-				updateData()
-				log("Saved data!")
-				return true
-			} catch {
-				log("Error saving data: \(error.localizedDescription)")
-				return false
-			}
-		}
-		
-		return false
+	func save() {
+		updateData()
+		dataController.save()
+	}
+	
+	init() {
+		updateData()
 	}
 	
 	/// Add a transaction to the transactions array.
