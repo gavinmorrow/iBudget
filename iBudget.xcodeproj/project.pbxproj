@@ -102,6 +102,8 @@
 		86B1CD4C2864C10700F48CA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86B1CD4F2864C10700F48CA4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		86DFEACF2889D99C0023B1E5 /* WidgetsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetsController.swift; sourceTree = "<group>"; };
+		86DFEAD12889E5E20023B1E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		86DFEAD72889E75B0023B1E5 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		86EF960E287B7CC9004F0379 /* BalanceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BalanceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		86EF9612287B7CC9004F0379 /* BalanceWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceWidget.swift; sourceTree = "<group>"; };
 		86EF9614287B7CC9004F0379 /* BalanceWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = BalanceWidget.intentdefinition; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		86B1CD472864C10400F48CA4 /* iBudget */ = {
 			isa = PBXGroup;
 			children = (
+				86DFEAD12889E5E20023B1E5 /* Info.plist */,
 				86192FA22875C4C0003E01CD /* iBudget.entitlements */,
 				86B1CD482864C10400F48CA4 /* IBudgetApp.swift */,
 				86689375286F8EFB002FE51D /* Views */,
@@ -262,6 +265,7 @@
 			children = (
 				86FE9FAF287595CA009A6654 /* WidgetKit.framework */,
 				86FE9FB1287595CA009A6654 /* SwiftUI.framework */,
+				86DFEAD72889E75B0023B1E5 /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -551,6 +555,7 @@
 				DEVELOPMENT_TEAM = 2K686Y87BH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iBudget/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock your transactions. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -583,6 +588,7 @@
 				DEVELOPMENT_TEAM = 2K686Y87BH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iBudget/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock your transactions. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

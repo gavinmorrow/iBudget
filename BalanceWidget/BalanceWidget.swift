@@ -12,15 +12,15 @@ import CoreData
 
 struct Provider: IntentTimelineProvider {
 	func placeholder(in context: Context) -> SimpleEntry {
-		SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+		SimpleEntry(date: Date(), configuration: TimeSpanIntent())
 	}
 	
-	func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+	func getSnapshot(for configuration: TimeSpanIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
 		let entry = SimpleEntry(date: Date(), configuration: configuration)
 		completion(entry)
 	}
 	
-	func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+	func getTimeline(for configuration: TimeSpanIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
 		let entries: [SimpleEntry] = [
 			SimpleEntry(date: Date(), configuration: configuration)
 		]
@@ -32,7 +32,7 @@ struct Provider: IntentTimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
 	let date: Date
-	let configuration: ConfigurationIntent
+	let configuration: TimeSpanIntent
 	
 	var transactions: [Transaction]
 	var balance: Double { transactions.reduce(0, +) }
@@ -69,12 +69,45 @@ struct SimpleEntry: TimelineEntry {
 		return "\(tempBal.rounded(to: 2)) \(numbers[i])"
 	}
 	
-	init(date: Date, configuration: ConfigurationIntent) {
+	init(date: Date, configuration: TimeSpanIntent) {
+		log("Starting Widget...")
+		
 		// Init date & config
 		self.date = date
 		self.configuration = configuration
 		
-		transactions = dataController.loadDataArray()
+		let timeSpan: Date? = {
+			let calendar = Calendar.current
+			let date = Date.now
+			
+			switch configuration.timeSpan {
+				case .unknown:
+					return .distantPast
+				case .calendarWeek:
+					let dateInterval = calendar.dateInterval(of: .weekOfYear, for: date)
+					log("Calendar Week dateInterval: \(dateInterval?.debugDescription ?? "nil").\n Start: \(dateInterval?.start.debugDescription ?? "nil")")
+					return dateInterval?.start
+				case .calendarMonth:
+					return calendar.dateComponents([.year, .month], from: date).date
+				case .calendarYear:
+					return calendar.dateComponents([.year], from: date).date
+				case .week:
+					let components = DateComponents(weekOfYear: -1)
+					return calendar.date(byAdding: components, to: date)
+				case .month:
+					let components = DateComponents(month: -1)
+					return calendar.date(byAdding: components, to: date)
+				case .year:
+					let components = DateComponents(year: -1)
+					return calendar.date(byAdding: components, to: date)
+			}
+		}()
+		
+		log(timeSpan?.debugDescription ?? "No time span")
+		
+		transactions = dataController.loadDataArray(
+			predicate: NSPredicate(format: "optionalDate >= %@", argumentArray: [timeSpan ?? .distantPast])
+		)
 	}
 }
 
@@ -106,7 +139,7 @@ struct BalanceWidget: Widget {
 	let kind: String = "com.gm.iBudget.BalanceWidget"
 	
 	var body: some WidgetConfiguration {
-		IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+		IntentConfiguration(kind: kind, intent: TimeSpanIntent.self, provider: Provider()) { entry in
 			BalanceWidgetEntryView(entry: entry)
 		}
 		.configurationDisplayName("Balance")
@@ -116,7 +149,7 @@ struct BalanceWidget: Widget {
 
 struct BalanceWidget_Previews: PreviewProvider {
 	static var previews: some View {
-		BalanceWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+		BalanceWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: TimeSpanIntent()))
 			.previewContext(WidgetPreviewContext(family: .systemSmall))
 	}
 }
