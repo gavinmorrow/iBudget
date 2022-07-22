@@ -42,10 +42,10 @@ import WidgetKit
 			do {
 				try dataController.moc.save()
 				updateData()
-				dPrint("Saved data! :)")
+				log("Saved data!")
 				return true
 			} catch {
-				dPrint("Error saving: \(error.localizedDescription)")
+				log("Error saving data: \(error.localizedDescription)")
 				return false
 			}
 		}

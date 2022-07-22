@@ -14,21 +14,17 @@ class DataController {
 	let persistenContainerName: String
 	
 	lazy var persistentContainer: NSPersistentContainer = { () -> SharedAppGroupNSPersistentContainer in
-		dPrint("Container start")
-		
 		// Create container
 		let container = SharedAppGroupNSPersistentContainer(name: persistenContainerName)
 		container.loadPersistentStores { description, error in
 			if let error = error {
-				dPrint("Error loading Core Data: \(error.localizedDescription)")
+				log("Error loading Core Data: \(error.localizedDescription)")
 				return
 			}
 			
 			container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-			dPrint("Container stores loaded: \(description.description)")
+			log("CoreDate persistent container stores loaded: \(description.debugDescription)")
 		}
-		
-		dPrint("Returning container")
 		
 		return container
 	}()
@@ -36,8 +32,6 @@ class DataController {
 	var moc: NSManagedObjectContext { persistentContainer.viewContext }
 	
 	init(name: String) {
-		dPrint("DataController init")
-		
 		self.persistenContainerName = name
 	}
 	
@@ -69,7 +63,7 @@ extension DataController {
 		)
 		
 		guard fetchedResults.count > 0 else {
-			dPrint("WARNING: No CoreData results were found.")
+			log("WARNING: No CoreData results were found.")
 			return defaultValue
 		}
 		
@@ -92,7 +86,7 @@ extension DataController {
 	) -> [T] {
 		loadPersistentContainer()
 		
-		dPrint("Loading data array for \(T.entity().name ?? "Unknown Entity").")
+		log("Loading data array for \(T.entity().name ?? "Unknown Entity").")
 		
 		let fetchRequest = T.fetchRequest() as! NSFetchRequest<T>
 		fetchRequest.sortDescriptors = sortDescriptors
@@ -112,7 +106,7 @@ class SharedAppGroupNSPersistentContainer: NSPersistentContainer {
 			fatalError("|> Shared app group URL not found!")
 		}
 		
-		dPrint("Shared app group URL found: \(String(describing: sharedAppGroupURL!))")
+		log("Shared app group URL found: \(String(describing: sharedAppGroupURL!))")
 		
 		return sharedAppGroupURL!
 	}

@@ -13,12 +13,12 @@ enum WidgetsController {
 	}
 	
 	static func updateAllWidgets() {
-		dPrint("Reloading all widgets.")
+		log("Reloading all widgets.")
 		WidgetCenter.shared.reloadAllTimelines()
 	}
 	
 	static func updateWidget(ofKind kind: String) {
-		dPrint("Reloading widget of kind com.gm.iBudget.\(kind)")
+		log("Reloading widget of kind com.gm.iBudget.\(kind)")
 		WidgetCenter.shared.reloadTimelines(ofKind: kind)
 	}
 	
