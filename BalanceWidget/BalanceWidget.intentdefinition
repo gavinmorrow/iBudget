@@ -19,7 +19,7 @@
 			<array>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>All Time</string>
+					<string>unknown</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>esxyNT</string>
 					<key>INEnumValueName</key>
@@ -27,11 +27,21 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
+					<string>all time</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>WhXdEx</string>
+					<key>INEnumValueIndex</key>
+					<integer>1</integer>
+					<key>INEnumValueName</key>
+					<string>allTime</string>
+				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
 					<string>calendar week</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>bVcGUP</string>
 					<key>INEnumValueIndex</key>
-					<integer>1</integer>
+					<integer>2</integer>
 					<key>INEnumValueName</key>
 					<string>calendarWeek</string>
 				</dict>
@@ -41,7 +51,7 @@
 					<key>INEnumValueDisplayNameID</key>
 					<string>891bRz</string>
 					<key>INEnumValueIndex</key>
-					<integer>2</integer>
+					<integer>3</integer>
 					<key>INEnumValueName</key>
 					<string>calendarMonth</string>
 				</dict>
@@ -51,7 +61,7 @@
 					<key>INEnumValueDisplayNameID</key>
 					<string>2NZbuu</string>
 					<key>INEnumValueIndex</key>
-					<integer>3</integer>
+					<integer>4</integer>
 					<key>INEnumValueName</key>
 					<string>calendarYear</string>
 				</dict>
@@ -61,7 +71,7 @@
 					<key>INEnumValueDisplayNameID</key>
 					<string>QmVgcA</string>
 					<key>INEnumValueIndex</key>
-					<integer>4</integer>
+					<integer>5</integer>
 					<key>INEnumValueName</key>
 					<string>week</string>
 				</dict>
@@ -71,7 +81,7 @@
 					<key>INEnumValueDisplayNameID</key>
 					<string>FO4Oan</string>
 					<key>INEnumValueIndex</key>
-					<integer>5</integer>
+					<integer>6</integer>
 					<key>INEnumValueName</key>
 					<string>month</string>
 				</dict>
@@ -81,7 +91,7 @@
 					<key>INEnumValueDisplayNameID</key>
 					<string>doIcAv</string>
 					<key>INEnumValueIndex</key>
-					<integer>6</integer>
+					<integer>7</integer>
 					<key>INEnumValueName</key>
 					<string>year</string>
 				</dict>
@@ -132,6 +142,11 @@
 					<string>TimeSpan</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
 					<string>88xZPY</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>allTime</string>
+					</dict>
 					<key>INIntentParameterName</key>
 					<string>timeSpan</string>
 					<key>INIntentParameterPromptDialogs</key>

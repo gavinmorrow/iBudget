@@ -81,7 +81,7 @@ struct SimpleEntry: TimelineEntry {
 			let date = Date.now
 			
 			switch configuration.timeSpan {
-				case .unknown:
+				case .unknown, .allTime:
 					return .distantPast
 				case .calendarWeek:
 					let dateInterval = calendar.dateInterval(of: .weekOfYear, for: date)
