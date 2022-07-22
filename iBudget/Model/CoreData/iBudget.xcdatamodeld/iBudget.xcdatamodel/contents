@@ -7,7 +7,7 @@
         <relationship name="transactionsNSSet" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="store" inverseEntity="Transaction"/>
     </entity>
     <entity name="Transaction" representedClassName="Transaction" syncable="YES">
-        <attribute name="cents" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="cents" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="isDebt" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="optionalDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="optionalId" attributeType="UUID" usesScalarValueType="NO"/>
