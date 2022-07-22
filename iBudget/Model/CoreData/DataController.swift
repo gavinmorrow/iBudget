@@ -33,6 +33,7 @@ class DataController {
 	
 	init(name: String) {
 		self.persistenContainerName = name
+		log(#"DataController starting for persistent container "\(name)""#)
 	}
 	
 	func loadPersistentContainer() {
