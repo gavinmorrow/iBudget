@@ -16,7 +16,7 @@ struct CreateStoresView: View {
 	
 	@FocusState private var nameHasFocus
 	
-    var body: some View {
+	var body: some View {
 		Form {
 			Section(header: Text("Required")) {
 				TextField("Name", text: $name)
@@ -39,15 +39,15 @@ struct CreateStoresView: View {
 				}
 			}
 		}
-    }
+	}
 }
 
 struct CreateStoresView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		let viewModel = ViewModel()
 		viewModel.addStore(name: "Sing's", notes: "Fav deli")
 		viewModel.addStore(name: "Bagel Bob's", notes: "Yummy bagels!")
 		
 		return CreateStoresView(viewModel: viewModel)
-    }
+	}
 }
