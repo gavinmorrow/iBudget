@@ -14,16 +14,6 @@ struct TransactionDetailView: View {
 	@Environment(\.horizontalSizeClass) var horizontalSizeClass
 	@Environment(\.sizeCategory) var typeSize
 	
-	private var backgroundColor: some View {
-		differentiateWithoutColor
-		? nil
-		: (
-			getColor(of: transaction)
-				.opacity(0.05)
-				.ignoresSafeArea()
-		)
-	}
-	
 	var body: some View {
 		VStack {
 			Group {
@@ -56,7 +46,6 @@ struct TransactionDetailView: View {
 			.listStyle(.plain)
 		}
 		.padding()
-		.background(backgroundColor)
 		.navigationTitle("\(transaction.localizedAmount) \(transaction.type.rawValue)")
 		.navigationBarTitleDisplayMode(.inline)
 	}
@@ -85,24 +74,33 @@ struct TransactionDetailView: View {
 fileprivate struct StoreNavigationLink: View {
 	let store: Store
 	
-	@State private var listRowBackground: Color? = .clear
-	
 	var body: some View {
 		NavigationLink {
 			StoreDetailView(store: store)
 		} label: {
 			Text(store.name)
 		}
-		.listRowBackground(listRowBackground)
-		// FIXME: the background color of the row doesn't change when clicked on
 	}
 }
 
 struct TransactionDetailView_Previews: PreviewProvider {
 	static var previews: some View {
 		let viewModel = ViewModel()
-		let store = viewModel.addStore(name: "Test Store", notes: "Just a test :)")
-		let transaction = viewModel.addTransaction(amount: 5, type: .debt, store: store, notes: "Just a test :)")
-		return TransactionDetailView(transaction: transaction)
+		
+		let store = viewModel.addStore(
+			name: "Test Store",
+			notes: "Just a test :)"
+		)
+		
+		let transaction = viewModel.addTransaction(
+			amount: 5,
+			type: .debt,
+			store: store,
+			notes: "Just a test :)"
+		)
+		
+		return NavigationView {
+			TransactionDetailView(transaction: transaction)
+		}
 	}
 }
