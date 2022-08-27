@@ -31,8 +31,8 @@ import WidgetKit
 	}
 	
 	func save() {
-		updateData()
 		dataController.save()
+		updateData()
 	}
 	
 	init() {
@@ -49,7 +49,7 @@ import WidgetKit
 		type: TransactionType = .debt,
 		store: Store,
 		notes: String = "",
-		date: Date = Date()
+		date: Date = Date.now
 	) -> Transaction {
 		precondition(amount > 0, "`amount` must be greater than 0")
 		
@@ -76,6 +76,23 @@ import WidgetKit
 		
 		save()
 		WidgetsController.updateWidget(ofKind: .balance)
+	}
+	
+	func editTransaction(
+		_ transaction: Transaction,
+		newAmount amount: Double? = nil,
+		newType type: TransactionType? = nil,
+		newStore store: Store? = nil,
+		newNotes notes: String? = nil,
+		newDate date: Date? = nil
+	) {
+		transaction.id = UUID()
+		if let amount = amount { transaction.amount = amount }
+		if let type   = type   { transaction.type   = type }
+		if let store  = store  { transaction.store  = store }
+		if let notes  = notes  { transaction.notes  = notes }
+		if let date   = date   { transaction.date   = date }
+		save()
 	}
 	
 	/// Add a store
