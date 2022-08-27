@@ -1,6 +1,7 @@
 # BudgetTracker Todo List
 
-- [ ] Changing transactions
+- [ ] Editing transactions
+- [ ] Make store while creating a transaction
 - [ ] Swipe actions
 - [ ] Authentication to view transactions
 
