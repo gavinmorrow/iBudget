@@ -26,7 +26,7 @@ struct TransactionsView: View {
 					Section(header: Text("Transactions")) {
 						ForEach(viewModel.transactions) { transaction in
 							NavigationLink {
-								TransactionDetailView(transaction: transaction)
+								TransactionView(transaction: transaction)
 							} label: {
 								TransactionRow(transaction: transaction)
 							}
