@@ -78,6 +78,12 @@ import WidgetKit
 		WidgetsController.updateWidget(ofKind: .balance)
 	}
 	
+	/// Edit a transaction.
+	///
+	/// This also changes the UUID (to a random value).
+	/// To omit changing a property, set the parameter to `nil`.
+	/// If you only want to change the UUID,
+	/// make all the parameters `nil`.
 	func editTransaction(
 		_ transaction: Transaction,
 		newAmount amount: Double? = nil,
