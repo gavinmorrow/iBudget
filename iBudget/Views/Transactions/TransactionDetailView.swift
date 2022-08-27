@@ -18,12 +18,11 @@ struct TransactionDetailView: View {
 		differentiateWithoutColor
 		? nil
 		: (
-			(transaction.type == .credit ? Color.green : Color.red)
+			getColor(of: transaction)
 				.opacity(0.05)
 				.ignoresSafeArea()
 		)
 	}
-	
 	
 	var body: some View {
 		VStack {
