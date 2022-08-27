@@ -24,7 +24,7 @@ struct TransactionsView: View {
 				
 				List {
 					Section(header: Text("Transactions")) {
-						ForEach(viewModel.transactions.sorted { $0.date > $1.date }) { transaction in
+						ForEach(viewModel.transactions) { transaction in
 							NavigationLink {
 								TransactionDetailView(transaction: transaction)
 							} label: {

@@ -16,7 +16,7 @@ extension Transaction {
         return NSFetchRequest<Transaction>(entityName: "Transaction")
     }
 
-    @NSManaged public var cents: Int32
+    @NSManaged public var cents: Int64
     @NSManaged public var optionalId: UUID?
 	@NSManaged public var optionalDate: Date?
     @NSManaged public var optionalNotes: String?
@@ -31,7 +31,7 @@ extension Transaction {
 	
 	public var amount: Double {
 		get { Double(cents) / 100.0 }
-		set { cents = Int32(newValue * 100) }
+		set { cents = Int64(min(newValue * 100, Double(Int64.max))) }
 	}
 	
 	/// The amount taking into consideration the `type` of the transaction.
