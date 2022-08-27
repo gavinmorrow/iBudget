@@ -87,10 +87,10 @@ import WidgetKit
 	func editTransaction(
 		_ transaction: Transaction,
 		newAmount amount: Double? = nil,
-		newType type: TransactionType? = nil,
-		newStore store: Store? = nil,
-		newNotes notes: String? = nil,
-		newDate date: Date? = nil
+		newType   type:  TransactionType? = nil,
+		newStore  store: Store?           = nil,
+		newNotes  notes: String?          = nil,
+		newDate   date:  Date?            = nil
 	) {
 		transaction.id = UUID()
 		if let amount = amount { transaction.amount = amount }
