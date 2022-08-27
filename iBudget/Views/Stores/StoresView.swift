@@ -17,7 +17,7 @@ struct StoresView: View {
 			List {
 				ForEach(viewModel.stores) { store in
 					NavigationLink {
-						StoreDetailView(store: store)
+						StoreView(store: store)
 					} label: {
 						Text(store.name)
 					}
