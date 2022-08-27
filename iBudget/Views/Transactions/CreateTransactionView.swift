@@ -44,8 +44,8 @@ struct CreateTransactionView: View {
 							Text(type.rawValue)
 						}
 					}
-					.focused($typeHasFocus)
 					.pickerStyle(.segmented)
+					.focused($typeHasFocus)
 					
 					Picker("Store", selection: $selectedStore) {
 						// TODO: option to make a new store
