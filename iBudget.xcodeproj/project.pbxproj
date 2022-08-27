@@ -47,6 +47,8 @@
 		86EF962C287E231C004F0379 /* Double-rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EF9629287E2270004F0379 /* Double-rounded.swift */; };
 		86EF962E287E2E9E004F0379 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EF962D287E2E9E004F0379 /* DataController.swift */; };
 		86EF962F287E2E9F004F0379 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EF962D287E2E9E004F0379 /* DataController.swift */; };
+		86F20A2A28BA3A7B00B4A539 /* TransactionEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F20A2928BA3A7B00B4A539 /* TransactionEditView.swift */; };
+		86F20A2C28BA457A00B4A539 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F20A2B28BA457A00B4A539 /* TransactionView.swift */; };
 		86FE9FA22870FA5A009A6654 /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA12870FA5A009A6654 /* TransactionsView.swift */; };
 		86FE9FA62874DDE9009A6654 /* String-deletingPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FE9FA52874DDE9009A6654 /* String-deletingPrefix.swift */; };
 /* End PBXBuildFile section */
@@ -111,6 +113,8 @@
 		86EF9617287B7CCC004F0379 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86EF9629287E2270004F0379 /* Double-rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Double-rounded.swift"; path = "iBudget/Helper/Double-rounded.swift"; sourceTree = SOURCE_ROOT; };
 		86EF962D287E2E9E004F0379 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataController.swift; path = iBudget/Model/CoreData/DataController.swift; sourceTree = SOURCE_ROOT; };
+		86F20A2928BA3A7B00B4A539 /* TransactionEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionEditView.swift; sourceTree = "<group>"; };
+		86F20A2B28BA457A00B4A539 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		86FE9FA12870FA5A009A6654 /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		86FE9FA52874DDE9009A6654 /* String-deletingPrefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String-deletingPrefix.swift"; path = "iBudget/Helper/String-deletingPrefix.swift"; sourceTree = SOURCE_ROOT; };
 		86FE9FAF287595CA009A6654 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -183,9 +187,11 @@
 		8682C9AC287746470081E284 /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				86F20A2B28BA457A00B4A539 /* TransactionView.swift */,
 				86FE9FA12870FA5A009A6654 /* TransactionsView.swift */,
 				867DED4D2869C62200240434 /* CreateTransactionView.swift */,
 				863BB1F0286522C900253B0F /* TransactionDetailView.swift */,
+				86F20A2928BA3A7B00B4A539 /* TransactionEditView.swift */,
 				863BB1EE28651D8300253B0F /* TransactionRow.swift */,
 			);
 			path = Transactions;
@@ -376,8 +382,10 @@
 				86B1CD4B2864C10400F48CA4 /* ContentView.swift in Sources */,
 				8682C9AE287746970081E284 /* StoreDetailView.swift in Sources */,
 				863BB1F1286522C900253B0F /* TransactionDetailView.swift in Sources */,
+				86F20A2A28BA3A7B00B4A539 /* TransactionEditView.swift in Sources */,
 				863BB1F32865F40800253B0F /* AmountView.swift in Sources */,
 				86EF9619287B7CCC004F0379 /* BalanceWidget.intentdefinition in Sources */,
+				86F20A2C28BA457A00B4A539 /* TransactionView.swift in Sources */,
 				867DED50286E41EA00240434 /* FileManager-Extension.swift in Sources */,
 				869284692888BE0400166A85 /* log.swift in Sources */,
 				8682C99F28770FD20081E284 /* Transaction+CoreDataProperties.swift in Sources */,
