@@ -92,7 +92,9 @@ import WidgetKit
 		if let store  = store  { transaction.store  = store }
 		if let notes  = notes  { transaction.notes  = notes }
 		if let date   = date   { transaction.date   = date }
+		
 		save()
+		WidgetsController.updateWidget(ofKind: .balance)
 	}
 	
 	/// Add a store
