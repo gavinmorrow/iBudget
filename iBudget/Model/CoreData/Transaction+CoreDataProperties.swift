@@ -26,12 +26,19 @@ extension Transaction {
 	
 	public var id: UUID {
 		get { optionalId ?? UUID() }
-		set { optionalId = newValue }
+		set {
+			log("id changing")
+			objectWillChange.send()
+			optionalId = newValue
+		}
 	}
 	
 	public var amount: Double {
 		get { Double(cents) / 100.0 }
-		set { cents = Int64(min(newValue * 100, Double(Int64.max))) }
+		set {
+			objectWillChange.send()
+			cents = Int64(min(newValue * 100, Double(Int64.max)))
+		}
 	}
 	
 	/// The amount taking into consideration the `type` of the transaction.
@@ -52,17 +59,26 @@ extension Transaction {
 	
 	public var date: Date {
 		get { optionalDate ?? Date() }
-		set { optionalDate = newValue}
+		set {
+			objectWillChange.send()
+			optionalDate = newValue
+		}
 	}
 	
 	public var notes: String {
 		get { optionalNotes ?? "" }
-		set { optionalNotes = newValue}
+		set {
+			objectWillChange.send()
+			optionalNotes = newValue
+		}
 	}
 	
 	public var type: TransactionType {
 		get { isDebt ? .debt : .credit }
-		set { isDebt = newValue == .debt}
+		set {
+			objectWillChange.send()
+			isDebt = newValue == .debt
+		}
 	}
 }
 
