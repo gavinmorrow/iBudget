@@ -13,19 +13,17 @@ struct TransactionView: View {
 	@EnvironmentObject var viewModel: ViewModel
 	
 	var body: some View {
-		NavigationView {
-			TransactionDetailView(transaction: transaction)
-				.toolbar {
-					Button("Edit") {
-						editing = true
-					}
+		TransactionDetailView(transaction: transaction)
+			.toolbar {
+				Button("Edit") {
+					editing = true
 				}
-		}
-		.sheet(isPresented: $editing) {
-			TransactionEditView(
-				transaction: transaction
-			)
-		}
+			}
+			.sheet(isPresented: $editing) {
+				TransactionEditView(
+					transaction: transaction
+				)
+			}
 	}
 }
 
@@ -62,9 +60,11 @@ struct TransactionView_Previews: PreviewProvider {
 			notes: "Just a test :)"
 		)
 		
-		return TransactionView(
-			transaction: transaction
-		)
-		.environmentObject(viewModel)
+		return NavigationView {
+			TransactionView(
+				transaction: transaction
+			)
+			.environmentObject(viewModel)
+		}
 	}
 }
