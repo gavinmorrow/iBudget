@@ -127,5 +127,24 @@ import WidgetKit
 		save()
 	}
 	
+	/// Edit a store.
+	///
+	/// This also changes the UUID (to a random value).
+	/// To omit changing a property, set the parameter to `nil`.
+	/// If you only want to change the UUID,
+	/// make all the parameters `nil`.
+	func editStore(
+		_ store: Store,
+		newName  name:  String? = nil,
+		newNotes notes: String? = nil
+	) {
+		store.id = UUID()
+		if let name  = name  { store.name  = name }
+		if let notes = notes { store.notes = notes }
+		
+		save()
+		WidgetsController.updateWidget(ofKind: .balance)
+	}
+	
 	@Published var isUnlocked = false
 }
