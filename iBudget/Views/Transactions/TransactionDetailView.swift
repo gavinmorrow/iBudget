@@ -35,14 +35,12 @@ struct TransactionDetailView: View {
 			List {
 				if !transaction.notes.isEmpty {
 					Text(transaction.notes)
-						.listRowBackground(Color.clear)
 				}
 				
 				if let store = transaction.store {
 					StoreNavigationLink(store: store)
 				}
 			}
-			.background(.clear)
 			.listStyle(.plain)
 		}
 		.padding()

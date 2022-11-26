@@ -28,6 +28,7 @@ struct StoresView: View {
 					}
 				}
 			}
+			.listStyle(.plain)
 			.navigationTitle("Stores")
 			.sheet(isPresented: $showingSheet) {
 				CreateStoresView(viewModel: viewModel)

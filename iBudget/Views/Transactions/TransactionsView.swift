@@ -38,9 +38,8 @@ struct TransactionsView: View {
 						}
 					}
 				}
-				.listStyle(.insetGrouped)
+				.listStyle(.plain)
 			}
-			.background(Color(.systemGray6))
 			.navigationTitle("iBudget")
 			.sheet(isPresented: $showingSheet) {
 				CreateTransactionView(viewModel: viewModel)
