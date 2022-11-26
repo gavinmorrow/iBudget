@@ -12,7 +12,9 @@ struct StoreDetailView: View {
 	
 	var body: some View {
 		List {
-			Text(store.notes)
+			if !store.notes.isEmpty {
+				Text(store.notes)
+			}
 			
 			Section(header: Text("Transactions")) {
 				ForEach(store.transactions.sorted()) { transaction in
